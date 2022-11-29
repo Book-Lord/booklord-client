@@ -1,3 +1,4 @@
+<!-- TODO: export it to nuxt layout -->
 <template>
     <div :class="{ 'w-1/6': sidebarToggle, 'w-[3rem]': !sidebarToggle, }" class="fixed transition-all duration-300">
       <div :class="{ 'px-3': sidebarToggle, 'px-1': !sidebarToggle, }" class="overflow-y-auto h-screen py-4 bg-gray-50 rounded dark:bg-gray-800 transition-all duration-300">

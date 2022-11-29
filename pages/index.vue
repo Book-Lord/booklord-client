@@ -1,8 +1,5 @@
 <template>
-   <div>
-      <side-bar />
-      <books-browser />
-   </div>
+   <books-browser />
 </template>
 
 <script>
