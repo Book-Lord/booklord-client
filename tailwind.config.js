@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+// TODO: Look for additional prod settings
 module.exports = {
   darkMode: 'false',
   content: [
