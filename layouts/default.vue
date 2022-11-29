@@ -1,6 +1,9 @@
 <template>
     <div>
-        <side-bar />
-        <Nuxt keep-alive class="ml-80" />
+        <top-bar />
+        <div class="pt-24">
+            <side-bar />
+            <Nuxt keep-alive class="pl-80" />
+        </div>
     </div>
 </template>

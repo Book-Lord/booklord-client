@@ -1,7 +1,10 @@
 <template>
     <nuxt-link :to="'/book/' + bookId">
-        <div class="box-border inline-block mt-4 mr-4 h-72 w-48 p-4 border-4 rounded" :style="{ 'background-image': 'url(' + coverImg + ')' }">
-            <p class="center">{{ title }}</p>
+        <div class="p-2 inline-block align-top">
+            <div class="p-2 bg-slate-100 rounded">
+                <div class="box-border h-72 w-48 bg-slate-400 rounded bg-cover" :style="{ 'background-image': 'url(' + coverImg + ')' }" />
+                <span class="p-2 block w-48 text-center font-medium">{{ title }}</span>
+            </div>
         </div>
     </nuxt-link>
 </template>
