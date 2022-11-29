@@ -1,6 +1,10 @@
 <template>
-    <div>
-        <book-preview v-for="(book, idx) in booksData" :key="idx" :title="book.title" />
+    <div v-if="!$fetchState.pending">
+        <div>
+            <div v-for="(book, idx) in booksData" :key="idx" class="inline-block">
+                <book-preview :title="book.title" :book-id="book._id" :cover-img="book.coverImg" />
+            </div>
+        </div>
     </div>
 </template>
 
@@ -20,6 +24,7 @@ export default {
       this.booksData = await fetch(
         'http://localhost:8000/api/books'
       ).then(res => res.json())
-    }
+    },
+
 }
 </script>

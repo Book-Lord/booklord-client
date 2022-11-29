@@ -1,6 +1,6 @@
 <template>
     <div>
         <side-bar />
-        <Nuxt class="ml-80" />
+        <Nuxt keep-alive class="ml-80" />
     </div>
 </template>
