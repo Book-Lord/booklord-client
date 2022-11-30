@@ -36,7 +36,14 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxt/http',
   ],
+
+  http: {
+    host: "localhost",
+    port: 8000,
+    prefix: "/api"
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {

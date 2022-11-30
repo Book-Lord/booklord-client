@@ -19,11 +19,8 @@ export default {
         }
     },
     // TODO: Move it to env variable
-    // create fetch config?
     async fetch() {
-      this.booksData = await fetch(
-        'http://localhost:8000/api/books'
-      ).then(res => res.json())
+      this.booksData = await this.$http.$get('/books');
     },
 
 }
