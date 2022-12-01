@@ -9,19 +9,22 @@
 </template>
 
 <script>
-// import axios from 'axios'
-
 export default {
     name: "BookBrowser",
+    props: {
+        booksList: Array
+    },
     data() {
         return {
             booksData: null,
         }
     },
-    // TODO: Move it to env variable
     async fetch() {
-      this.booksData = await this.$http.$get('/books');
+        if (this.booksList != null) {
+            this.booksData = this.booksList
+        } else {
+            this.booksData = await this.$http.$get('/books');
+        }
     },
-
 }
 </script>
