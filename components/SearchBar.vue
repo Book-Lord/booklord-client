@@ -20,13 +20,21 @@ export default {
             query: ""
         }
     },
+    watch: {
+        $route (to, from){
+            this.query = "";
+        }
+    },
     methods: {
         searchByName() {
             if (this.query.length > 0)
             {
                 this.$router.push({path: 'search', query: {title: this.query}});
+            } else 
+            {
+                this.$router.push({path: 'explore'});
             }
         }
-    }
+    },
 }
 </script>

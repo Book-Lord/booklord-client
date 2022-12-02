@@ -13,17 +13,9 @@ export default {
     },
     data() {
         return {
-            booksList: null,
-            title: null,
+            booksList: [],
         }
     },
-    watch: {
-        $route (to, from) {
-            this.title = this.$route.query.title;
-        }
-    },
-    created() {
-        this.title = this.$route.query.title;
-    },
+    // watchQuery: true,
 }
 </script>

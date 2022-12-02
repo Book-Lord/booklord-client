@@ -1,9 +1,7 @@
 <template>
-    <div v-if="!$fetchState.pending">
-        <div>
-            <div v-for="(book, idx) in booksData" :key="idx" class="inline-block">
-                <book-preview :title="book.title" :book-id="book._id" :cover-img="book.coverImg" />
-            </div>
+    <div>
+        <div v-for="(book, idx) in booksList" :key="idx" class="inline-block">
+            <book-preview :title="book.title" :book-id="book._id" :cover-img="book.coverImg" />
         </div>
     </div>
 </template>
@@ -14,17 +12,10 @@ export default {
     props: {
         booksList: Array
     },
-    data() {
-        return {
-            booksData: null,
-        }
-    },
-    async fetch() {
-        if (this.booksList != null) {
-            this.booksData = this.booksList
-        } else {
-            this.booksData = await this.$http.$get('/books');
-        }
-    },
+    // watch: {
+    //     $route (to, from) {
+    //         this.$nuxt.refresh();
+    //     }
+    // },
 }
 </script>
