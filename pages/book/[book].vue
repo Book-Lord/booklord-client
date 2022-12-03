@@ -1,3 +1,10 @@
+<script setup>
+    const apiBase = useRuntimeConfig().apiBase
+    const route = useRoute()
+
+    const { data: bookData } = await useAsyncData('getInfo', () => $fetch(apiBase + `/book/${route.params.book}`) )
+</script>
+
 <template>
     <div> 
         <div class="m-3 w-[40rem] inline-block">
@@ -10,20 +17,3 @@
         </div>
     </div>
 </template>
-
-<script>
-export default {
-    async asyncData({ params, $http }) {
-      const bookId = params.book;
-      
-      const bookData = await $http.$get(`/book/${bookId}`)
-
-      return { bookData }
-    },
-    data() {
-        return {
-            bookData: null,
-        }
-    },
-}
-</script>

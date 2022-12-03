@@ -1,5 +1,4 @@
 /** @type {import('tailwindcss').Config} */
-// TODO: Look for additional prod settings
 module.exports = {
   darkMode: 'false',
   content: [
@@ -8,6 +7,7 @@ module.exports = {
     "./pages/**/*.vue",
     "./plugins/**/*.{js,ts}",
     "./nuxt.config.{js,ts}",
+    "./app.vue",
   ],
   theme: {
     extend: {},

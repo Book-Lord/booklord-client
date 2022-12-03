@@ -7,6 +7,7 @@
             type="search"
             class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
             placeholder="Find a book"
+            autocomplete="off"
             />
         </form>
     </div>
@@ -29,10 +30,17 @@ export default {
         searchByName() {
             if (this.query.length > 0)
             {
-                this.$router.push({path: 'search', query: {title: this.query}});
+                return navigateTo({
+                    path: '/search',
+                    query: {
+                        title: this.query,
+                    }
+                })
             } else 
             {
-                this.$router.push({path: 'explore'});
+                return navigateTo({
+                    path: '/explore',
+                })
             }
         }
     },
