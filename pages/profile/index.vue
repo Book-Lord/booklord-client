@@ -10,10 +10,14 @@ const userId = computed(() => user.value?.id)
 const apiBase = useRuntimeConfig().apiBase
 
 const uri = apiBase + `/users/${userId.value}`
+const userInfo = ref(null)
 
-const { data: userInfo } = await $fetch(uri, { 
-        method: 'post',
-        body: { email: user.value?.email }
+await $fetch(uri, { 
+    method: 'post',
+    body: { email: user.value?.email }
+}).then( (res) => {
+    console.log(res)
+    userInfo.value = res
 })
 
 console.log(user.value)

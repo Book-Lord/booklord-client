@@ -5,5 +5,6 @@
 </script>
 
 <template>
-   <books-browser :books-list="booksList" />
+    <SearchBar />
+    <books-browser :books-list="booksList" />
 </template>

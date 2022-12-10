@@ -1,5 +1,5 @@
 <template>
-    <div class="xl:w-96 float-right">
+    <div class="xl:w-96 w-max m-3">
         <form @submit.prevent="searchByName">
             <input
             id="exampleSearch"
