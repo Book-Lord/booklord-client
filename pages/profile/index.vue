@@ -20,7 +20,12 @@ await $fetch(uri, {
     userInfo.value = res
 })
 
-console.log(user.value)
+const logOut = () => {
+    client.auth.signOut()
+
+    navigateTo('/explore')
+}
+
 
 onMounted(() => {
     if (!user.value) {
@@ -39,6 +44,6 @@ onMounted(() => {
         <br>
         <p>{{ userInfo }}</p>
 
-        <button @click="client.auth.signOut()" class="mt-20 p-2 font-medium bg-green-500 rounded hover:bg-green-400">Logout</button>
+        <button @click="logOut" class="mt-20 p-2 font-medium bg-green-500 rounded hover:bg-green-400">Logout</button>
     </div>
 </template> 
