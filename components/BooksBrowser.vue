@@ -1,5 +1,5 @@
 <template>
-    <div keep-alive>
+    <div>
         <div v-for="(book, idx) in booksList" :key="idx" class="inline-block">
             <BookPreview
                 :title="book.title"

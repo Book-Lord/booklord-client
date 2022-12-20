@@ -1,18 +1,24 @@
 <template>
-    <div class="">
+    <div class="ml-40">
         <div class="w-2/3 float-left">
-
+            <div>
+                <span class="font-semibold text-xl font-sans">Top 3 in Bulgaria</span>
+                <books-browser :booksList="booksList" />
+            </div>
+            <div class="mt-8">
+                <span class="font-semibold text-xl font-sans">Book Categories</span>
+            </div>
         </div>
         <div class="bg-indigo-50 h-screen float-right w-1/3 rounded-l-lg p-6">
             <span class="font-semibold text-xl font-sans">Friends' Recommendations</span>
-            <BookRecommendation title="The Name of the Wind" author="Patrick Rothfuss" coverImg="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1586722975l/2767052.jpg" />
-            <BookRecommendation title="The Potter Harry" author="David Goggins" coverImg="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1546910265l/2.jpg" />
+            <BookRecommendation title="The Name of the Wind" author="Patrick Rothfuss" coverImg="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1586722975l/2767052.jpg" message="The book is fascinating in terms of style and storyline" />
+            <BookRecommendation title="The Potter Harry" author="David Goggins" coverImg="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1546910265l/2.jpg" message="They had nothing in common until Love gave him the reason for" />
         </div>
     </div>
 </template>
 
-<script>
-export default {
-    
-}
+<script setup>
+const apiBase = useRuntimeConfig().apiBase
+
+const { data: booksList } = await useAsyncData('home', () => $fetch(apiBase + `/books/featured`) )
 </script>

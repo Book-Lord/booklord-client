@@ -9,7 +9,7 @@ const email = computed(() => user.value?.email)
 <template>    
     <div :class="{ 'w-76': sidebarToggle, 'w-12': !sidebarToggle, }" class="absolute transition-all duration-300 shadow rounded mt-3 overflow-x-clip">
       <div :class="{ 'px-6': sidebarToggle, 'px-1': !sidebarToggle, }" class=" overflow-hidden h-[90vh] flex flex-col py-4 bg-gray-50 rounded dark:bg-gray-800 transition-all duration-300">
-         <span :class="{ 'text-gray-50': !sidebarToggle }" class="text-center font-bold text-3xl py-6 transition-all duration-300">Bookward</span>
+         <span :class="{ 'text-gray-50': !sidebarToggle }" class="text-center font-bold text-3xl py-6 transition-all duration-300">Book<span class="text-purple-500">ward</span></span>
          <ul class="space-y-2">
             <SideBarLink title="Home" navigation="/">
                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
@@ -55,11 +55,20 @@ import SideBarLink from '~/components/sidebar/SideBarLink.vue'
 export default {
    data() {
       return {
-         sidebarToggle: true
+         sidebarToggle: false
       }
    },
    components: {
       SideBarLink
+   },
+   mounted() {
+      if (this.$route.path === '/')
+      {
+         this.sidebarToggle = true;
+      } 
+      else {
+         this.sidebarToggle = false;
+      }
    },
    watch: {
       $route(to, from) {

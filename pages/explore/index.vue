@@ -6,5 +6,10 @@
 
 <template>
     <SearchBar />
-    <books-browser :books-list="booksList" />
+    <div class="mt-8">
+        <div class="inline-block">
+            <filter-options />
+        </div>
+        <books-browser class="w-4/5 float-right inline-block" :books-list="booksList" />
+    </div>
 </template>

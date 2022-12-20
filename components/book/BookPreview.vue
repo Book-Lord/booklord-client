@@ -14,7 +14,7 @@
                     <LoveButton :is-liked="false" :book-id="bookId" />
                 </div>
                 <span
-                    class="block p-2 w-48 text-center font-semibold text-base text-ellipsis overflow-hidden whitespace-nowrap"
+                    class="block p-2 w-48 text-center font-semibold text-base truncate"
                 >
                     {{ title }}
                 </span>
