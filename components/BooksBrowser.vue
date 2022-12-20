@@ -1,21 +1,24 @@
 <template>
-    <div>
+    <div keep-alive>
         <div v-for="(book, idx) in booksList" :key="idx" class="inline-block">
-            <book-preview :title="book.title" :book-id="book._id" :cover-img="book.coverImg" />
+            <BookPreview
+                :title="book.title"
+                :book-id="book._id"
+                :cover-img="book.coverImg"
+                :main-genre="book.genres"
+            />
         </div>
     </div>
 </template>
 
 <script>
 export default {
-    name: "BookBrowser",
+    name: 'BookBrowser',
     props: {
-        booksList: Array
-    },
-    // watch: {
-    //     $route (to, from) {
-    //         this.$nuxt.refresh();
-    //     }
-    // },
+        booksList: {
+            type: Array,
+            required: true
+        }
+    }
 }
 </script>

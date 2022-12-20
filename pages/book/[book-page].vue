@@ -14,10 +14,10 @@
 
 <script setup>
 const { apiBase } = useRuntimeConfig()
-const { book } = useRoute().params
+const { bookpage } = useRoute().params
 
 const { data } = await useAsyncData('getInfo', () =>
-    $fetch(apiBase + `/book/${book}`)
+    $fetch(apiBase + `/book/${bookpage}`)
 )
 
 const { bookInfo, reviews } = data.value
