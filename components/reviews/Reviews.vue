@@ -11,8 +11,10 @@
                 <button class="bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-8 rounded">Add Review</button>
             </form>
         </div>
-        <div v-for="(review, idx) in reviews" :key="idx" >
-            <SingleReview :review="review" />
+        <div class="rounded bg-gray-50 p-3 mt-3">
+            <div v-for="(review, idx) in reviews" :key="idx" >
+                <SingleReview :review="review" />
+            </div>
         </div>
     </div>
 </template>
@@ -22,11 +24,10 @@
 
     // TODO: create review modal
 
-    const { reviews } = defineProps(['reviews'])
+    const { reviews, book } = defineProps(['reviews', 'book'])
 
     const userId = computed(() => useSupabaseUser().value?.id)
 
-    const { book } = useRoute().params
     const { apiBase } = useRuntimeConfig()
 
     const reviewContent = ref('')

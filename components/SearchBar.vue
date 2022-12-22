@@ -1,6 +1,6 @@
 <template>
-    <div class="xl:w-96 w-max m-3">
-        <form @submit.prevent="searchByName">
+    <div class="xl:w-64 w-max m-3">
+        <form @submit.prevent="searchByName" class="">
             <input
             v-model="query"
             type="search"

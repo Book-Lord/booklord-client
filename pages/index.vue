@@ -1,8 +1,8 @@
 <template>
-    <div class="ml-40">
+    <div class="ml-44">
         <div class="w-2/3 float-left">
             <div>
-                <span class="font-semibold text-xl font-sans">Top 3 in Bulgaria</span>
+                <span class="font-semibold text-xl font-sans">Viral in Bulgaria</span>
                 <books-browser :booksList="booksList" />
             </div>
             <div class="mt-8">

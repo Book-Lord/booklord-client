@@ -18,7 +18,7 @@
 
 <script>
 export default {
-    name: 'LoveButton',
+    name: 'BookLoveButton',
     props: {
         bookId: {
             type: String,

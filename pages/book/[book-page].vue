@@ -1,14 +1,10 @@
 <template>
     <div class="card">
-        <div class="m-3 w-[40rem] inline-block">
-            <p class="bold text-5xl">{{ bookInfo.title }}</p>
-            <span class="bold">{{ bookInfo.author }}</span>
-            <p class="text-sm pt-7">{{ bookInfo.description }}</p>
-        </div>
+        <BookInfo :book-info="bookInfo" class="inline-block" />
         <div class="float-right m-5 mr-20 inline-block">
             <img :src="bookInfo.coverImg" alt="" />
         </div>
-        <Reviews :reviews="reviews" />
+        <Reviews :reviews="reviews" :book="bookpage" />
     </div>
 </template>
 

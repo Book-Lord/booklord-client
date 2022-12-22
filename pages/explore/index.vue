@@ -5,7 +5,7 @@
 </script>
 
 <template>
-    <SearchBar />
+    <SearchBar class="block" />
     <div class="mt-8">
         <div class="inline-block">
             <filter-options />

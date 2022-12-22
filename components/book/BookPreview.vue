@@ -11,7 +11,7 @@
                 <div
                     class="box-border w-8 h-8 bg-white hover:bg-purple-500 absolute top-5 right-5 rounded flex justify-center transition duration-300 group"
                 >
-                    <LoveButton :is-liked="false" :book-id="bookId" />
+                    <BookLoveButton :is-liked="false" :book-id="bookId" />
                 </div>
                 <span
                     class="block p-2 w-48 text-center font-semibold text-base truncate"
@@ -27,12 +27,12 @@
 </template>
 
 <script>
-import LoveButton from '~/components/book/LoveButton.vue'
+import BookLoveButton from '~/components/book/BookLoveButton.vue'
 
 export default {
     name: 'BookPreview',
     components: {
-        LoveButton
+        BookLoveButton
     },
     props: {
         title: {
