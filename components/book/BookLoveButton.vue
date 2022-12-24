@@ -5,7 +5,7 @@
         viewBox="0 0 24 24"
         stroke-width="2.0"
         :stroke="liked ? 'red' : 'grey'"
-        class="w-5 align-bottom group-hover:stroke-white transition duration-300"
+        class="w-5 align-bottom group-hover:stroke-white transition duration-300 z-50 cursor-pointer"
         @click="toggleLike"
     >
         <path
@@ -16,28 +16,35 @@
     </svg>
 </template>
 
-<script>
-export default {
-    name: 'BookLoveButton',
-    props: {
-        bookId: {
-            type: String,
-            required: true
-        },
-        isLiked: {
-            type: Boolean,
-            default: false
-        }
-    },
-    data() {
-        return {
-            liked: this.isLiked
-        }
-    },
-    methods: {
-        toggleLike() {
-            this.liked = !this.liked
-        }
+<script setup>
+const { bookId, isLiked } = defineProps(['bookId', 'isLiked'])
+
+const user = useSupabaseUser()
+const userId = computed(() => user.value?.id)
+
+const apiBase = useRuntimeConfig().apiBase
+
+const liked = ref(isLiked)
+
+const toggleLike = async () => {
+    if (!user.value) {
+        navigateTo('/login')
     }
+
+    await $fetch(apiBase + `/saveBook`, {
+        method: 'post',
+        body: {
+            bookId: bookId,
+            userId: userId.value,
+            email: user.value?.email,
+            liked: !liked.value
+        }
+    }).then( (res) => {
+        console.log(res)
+
+        if (res.success) {
+            liked.value = !liked.value
+        }
+    })
 }
 </script>

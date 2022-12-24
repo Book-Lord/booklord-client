@@ -14,10 +14,14 @@ const userInfo = ref(null)
 
 await $fetch(uri, { 
     method: 'post',
-    body: { email: user.value?.email }
+    body: { 
+        userId: userId.value,
+        email: user.value?.email 
+    }
 }).then( (res) => {
-    console.log(res)
     userInfo.value = res
+}).catch( (err) => {
+    console.error(err);
 })
 
 const logOut = () => {
@@ -38,11 +42,23 @@ onMounted(() => {
     <div>
         <h1 class="text-3xl font-black">Profile</h1>
         <p class="mt-4">Welcome to your profile page</p>
-        <p class="mt-4">Your email is:</p>
-        <p>{{ email }}</p>
-        <p>{{ userId }}</p>
+
+        <div v-if="email">
+            <p class="mt-4">Your email is:</p>
+            <p>{{ email }}</p>
+        </div>
+        <error-loading error="Unable to get user email" v-else />
+
+        <div v-if="userId">
+            <p>{{ userId }}</p>
+        </div>
+        <error-loading error="Unable to get user ID" v-else />
+
         <br>
-        <p>{{ userInfo }}</p>
+        <div v-if="userInfo">
+            <p>{{ userInfo }}</p>
+        </div>
+        <error-loading error="Cannot fetch user info" v-else />
 
         <button @click="logOut" class="mt-20 p-2 font-medium bg-green-500 rounded hover:bg-green-400">Logout</button>
     </div>

@@ -27,18 +27,27 @@
     const { reviews, book } = defineProps(['reviews', 'book'])
 
     const userId = computed(() => useSupabaseUser().value?.id)
+    const email = computed(() => useSupabaseUser().value?.email)
 
     const { apiBase } = useRuntimeConfig()
 
     const reviewContent = ref('')
     const rating = ref(50)
+    
+    console.log(userId)
 
     const sendReview = async () => {
+        if (!userId.value) {
+            navigateTo('/login')
+            return
+        }
+
         await $fetch(apiBase + `/reviews`, {
             method: 'post',
             body: {
                 bookId: book,
                 userId: userId.value,
+                email: email.value,
                 rating: (rating.value / 10).toFixed(0),
                 content: reviewContent.value
             }
@@ -47,6 +56,8 @@
             reviews.unshift(res)
 
             reviewContent.value = ''
-        })        
+        }).catch( (err) => {
+            console.error(err);
+        })  
     }
 </script>
