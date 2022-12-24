@@ -56,7 +56,10 @@ onMounted(() => {
 
         <br>
         <div v-if="userInfo">
-            <p>{{ userInfo }}</p>
+            <div v-for="(obj, idx) in userInfo[0]" :key="idx">
+                <span class="mb-4"> {{ obj }}</span>
+            </div>
+            <!-- <p>{{ userInfo }}</p> -->
         </div>
         <error-loading error="Cannot fetch user info" v-else />
 

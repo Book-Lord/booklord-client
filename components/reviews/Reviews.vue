@@ -34,8 +34,6 @@
     const reviewContent = ref('')
     const rating = ref(50)
     
-    console.log(userId)
-
     const sendReview = async () => {
         if (!userId.value) {
             navigateTo('/login')
