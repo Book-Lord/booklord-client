@@ -43,12 +43,18 @@
 import FilterOption from './FilterOption.vue'
 
 const genres = [
-    'Action',
-    'Fantasy',
     'Fiction',
-    'Historical Fiction',
+    'Fantasy',
+    'Classics',
     'Childrens',
-    'Poetry'
+    'Poetry',
+    'Novels',
+    'Historical Fiction',
+    'Science Fiction',
+    'Philosophy',
+    'France',
+    'Teen',
+    'Adult'
 ]
 
 const ratings = [

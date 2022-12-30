@@ -20,7 +20,7 @@ const title = useState('title', () => '');
 const books = useState('books', () => []);
 const genres = useState('genres', () => []);
 
-const query = ref('')
+const query = ref(title.value)
 
 const searchByName = async () => {
     title.value = query.value
@@ -47,5 +47,9 @@ const searchByName = async () => {
         })
     }
 }
+
+watch(genres.value, () => {
+    searchByName()
+})
 
 </script>

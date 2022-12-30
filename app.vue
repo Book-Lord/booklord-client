@@ -4,7 +4,7 @@
           <SideBar />
       </div>
       <div class="pl-32 pt-12">
-          <NuxtPage :key="$route.fullPath" keep-alive />
+          <NuxtPage keep-alive />
       </div>
   </div>
 </template>
