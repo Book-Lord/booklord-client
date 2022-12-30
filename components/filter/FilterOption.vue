@@ -5,30 +5,17 @@
     </div>
 </template>
 
-<script>
-export default {
-    props: {
-        option: {
-            type: String,
-            required: true
-        }
-    },
-    data() {
-        return {
-            checked: false
-        }
-    },
-    watch: {
-        checked() {
-            // this.$emit('update:filter', this.checked)
-            console.log(this.$route.path)
-            // this.$router.push(
-            //     { 
-            //         path: "/search", 
-            //         query: { genre: type } 
-            //     }
-            // )
-        }
+<script setup>
+import { defineProps } from 'vue'
+
+const { category, option } = defineProps(['category', 'option'])
+
+const checked = ref(false)
+
+watch(checked, () => {
+    if (checked) {
+        useState(category, option)
     }
-}
+    console.log(checked.value)
+})
 </script>
