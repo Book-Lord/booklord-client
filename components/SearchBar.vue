@@ -12,36 +12,35 @@
     </div>
 </template>
 
-<script>
-export default {
-    name: "SearchBar",
-    data() {
-        return {
-            query: ""
-        }
-    },
-    watch: {
-        $route (to, from){
-            this.query = "";
-        }
-    },
-    methods: {
-        searchByName() {
-            if (this.query.length > 0)
-            {
-                return navigateTo({
-                    path: '/search',
-                    query: {
-                        title: this.query,
-                    }
-                })
-            } else 
-            {
-                return navigateTo({
-                    path: '/explore',
-                })
+<script setup>
+import { ref, watch } from 'vue'
+
+const query = ref('')
+
+const title = useState('title', () => '');
+
+watch(query, () => {
+    // useState('title', () => query.value)
+    title.value = query.value
+})
+
+const searchByName = () => {
+    
+
+    if (query.value.length > 0)
+    {
+        return navigateTo({
+            path: '/search',
+            query: {
+                title: query.value,
             }
-        }
-    },
+        })
+    } else 
+    {
+        return navigateTo({
+            path: '/explore',
+        })
+    }
 }
+
 </script>

@@ -2,7 +2,11 @@
     const apiBase = useRuntimeConfig().apiBase
     const userId = computed(() => useSupabaseUser()?.value?.id);
 
-    const { data: booksList } = await useAsyncData('explore', () => $fetch(apiBase + `/books/${userId.value || '0'}`) )
+    const booksList = useState('booksList', () => [])
+
+    const { data: returnData } = await useAsyncData('explore', () => $fetch(apiBase + `/books/${userId.value || '0'}`) )
+
+    booksList.value = returnData
 </script>
 
 <template>

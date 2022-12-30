@@ -6,17 +6,20 @@
 
     const booksList = ref([])
     
-    console.log(route.query)
+    const title = useState('title')
+    console.log(title.value)
+
     await $fetch(apiBase + `/book/search/`, { 
         method: 'post',
         body: {
-            title: route.query.title,
+            title: title.value || '',
             userId: userId.value || '0'
         }
     }).then( (res) => {
         booksList.value = res
     })
 
+    // TODO: use state 
 
 </script>
 
