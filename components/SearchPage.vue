@@ -1,5 +1,8 @@
 <template>
-    <SearchBar class="block" />
+    <div class="block">
+        <SearchBar class="inline-block align-middle" />
+        <span v-if="title" class="inline-block text-4xl font-thin ml-60 align-middle"> {{ title }}</span>
+    </div>
     <div class="mt-8">
         <div class="inline-block">
             <filter-options />
@@ -9,3 +12,7 @@
         </div>
     </div>
 </template>
+
+<script setup>
+const { title } = defineProps(['title'])
+</script>

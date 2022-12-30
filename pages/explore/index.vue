@@ -9,5 +9,5 @@
 </script>
 
 <template>
-    <search-page />
+    <search-page title="Explore" />
 </template>

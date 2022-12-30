@@ -29,7 +29,7 @@ const searchByName = async () => {
         await $fetch(apiBase + `/book/search/`, { 
             method: 'post',
             body: {
-                title: title.value || '',
+                title: title.value,
                 userId: userId.value || '0'
             }
         }).then( (res) => {

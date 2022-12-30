@@ -10,5 +10,5 @@
 </script>
 
 <template>
-    <search-page />
+    <search-page title="Search" />
 </template>
