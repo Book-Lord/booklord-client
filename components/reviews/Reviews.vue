@@ -22,8 +22,6 @@
 <script setup>
     import SingleReview from './SingleReview.vue';
 
-    // TODO: create review modal
-
     const { reviews, book } = defineProps(['reviews', 'book'])
 
     const userId = computed(() => useSupabaseUser().value?.id)

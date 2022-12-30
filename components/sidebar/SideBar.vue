@@ -1,4 +1,3 @@
-<!-- TODO: export it to nuxt layout -->
 <script setup>
 const user = useSupabaseUser()
 
