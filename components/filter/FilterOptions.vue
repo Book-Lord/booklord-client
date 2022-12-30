@@ -7,7 +7,7 @@
                 <p class="font-semibold py-4">By Genre</p>
                 <div class="columns-2">
                     <div v-for="(genre, idx) in genres" :key="idx">
-                        <filter-option :option="genre" />
+                        <filter-option category="genre" :option="genre" />
                     </div>
                 </div>
             </div>
@@ -32,7 +32,7 @@
                 <p class="font-semibold py-4">By Rating</p>
                 <div class="columns-2">
                     <div v-for="(rating, idx) in ratings" :key="idx">
-                        <filter-option :option="rating" />
+                        <filter-option category="rating" :option="rating" />
                     </div>
                 </div>
             </div>
