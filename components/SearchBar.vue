@@ -13,30 +13,33 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue'
+const apiBase = useRuntimeConfig().apiBase
+const userId = computed(() => useSupabaseUser()?.value?.id);
+
+const title = useState('title', () => '');
+const books = useState('books', () => [])
 
 const query = ref('')
 
-const title = useState('title', () => '');
-
-watch(query, () => {
-    // useState('title', () => query.value)
+const searchByName = async () => {
     title.value = query.value
-})
-
-const searchByName = () => {
-    
 
     if (query.value.length > 0)
     {
+        await $fetch(apiBase + `/book/search/`, { 
+            method: 'post',
+            body: {
+                title: title.value || '',
+                userId: userId.value || '0'
+            }
+        }).then( (res) => {
+            books.value = res
+        })
+
         return navigateTo({
             path: '/search',
-            query: {
-                title: query.value,
-            }
         })
-    } else 
-    {
+    } else {
         return navigateTo({
             path: '/explore',
         })

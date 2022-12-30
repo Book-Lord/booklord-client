@@ -1,31 +1,14 @@
 <script setup>
-    const apiBase = useRuntimeConfig().apiBase
-    const userId = computed(() => useSupabaseUser()?.value?.id);
+    const title = useState('title', () => '')
 
-    const route = useRoute()
-
-    const booksList = ref([])
-    
-    const title = useState('title')
-    console.log(title.value)
-
-    await $fetch(apiBase + `/book/search/`, { 
-        method: 'post',
-        body: {
-            title: title.value || '',
-            userId: userId.value || '0'
-        }
-    }).then( (res) => {
-        booksList.value = res
-    })
-
-    // TODO: use state 
+    if (title?.value === '') {
+        navigateTo({
+            path: '/explore',
+        })
+    }
 
 </script>
 
 <template>
-    <div>
-        <SearchBar />
-        <books-browser :books-list="booksList" />
-    </div>
+    <search-page />
 </template>
