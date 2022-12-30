@@ -6,9 +6,13 @@
 
     const booksList = ref([])
     
-    await $fetch(apiBase + `/book/search/${userId.value || '0'}`, { 
+    console.log(route.query)
+    await $fetch(apiBase + `/book/search/`, { 
         method: 'post',
-        body: { title: route.query.title }
+        body: {
+            title: route.query.title,
+            userId: userId.value || '0'
+        }
     }).then( (res) => {
         booksList.value = res
     })
