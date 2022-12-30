@@ -3,7 +3,7 @@
         <div class="w-2/3 float-left">
             <div>
                 <span class="font-semibold text-xl font-sans">Viral in Bulgaria</span>
-                <books-browser :booksList="booksList" />
+                <books-browser />
             </div>
             <div class="mt-8">
                 <span class="font-semibold text-xl font-sans">Book Categories</span>

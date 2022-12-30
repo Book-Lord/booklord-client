@@ -1,14 +1,16 @@
 <template>
-    <div class="block">
-        <SearchBar class="inline-block align-middle" />
-        <span v-if="title" class="inline-block text-4xl font-thin ml-60 align-middle"> {{ title }}</span>
-    </div>
-    <div class="mt-8">
-        <div class="inline-block">
-            <filter-options keep-alive />
+    <div>
+        <div class="block">
+            <SearchBar class="inline-block align-middle" />
+            <span v-if="title" class="inline-block text-4xl font-thin ml-60 align-middle"> {{ title }}</span>
         </div>
-        <div class="w-4/5 inline-block float-right p-4">
-            <books-browser class="w-4/5 float-right inline-block" />
+        <div class="mt-8">
+            <div class="inline-block">
+                <filter-options keep-alive />
+            </div>
+            <div class="w-4/5 inline-block float-right p-4">
+                <books-browser class="w-4/5 float-right inline-block" />
+            </div>
         </div>
     </div>
 </template>
