@@ -7,7 +7,7 @@
                 <p class="font-semibold py-4">By Genre</p>
                 <div class="columns-2">
                     <div v-for="(genre, idx) in genres" :key="idx">
-                        <filter-option category="genre" :option="genre" />
+                        <filter-option category="genres" :option="genre" />
                     </div>
                 </div>
             </div>
@@ -40,30 +40,25 @@
     </div>
 </template>
 
-<script>
+<script setup>
 import FilterOption from './FilterOption.vue'
 
-export default {
-    components: {
-        FilterOption
-    },
-    data() {
-        return {
-            genres: [
-                'Action',
-                'Fantasy',
-                'Fiction',
-                'Historical Fiction',
-                'Childrens',
-                'Poetry'
-            ],
-            ratings: [
-                'Decent (+3)',
-                'Good (+4)',
-                'Fantastic (+4.5)',
-                'Unmatched (5)'
-            ]
-        }
-    }
-}
+const genresState = useState('genres', () => [])
+
+const genres = [
+    'Action',
+    'Fantasy',
+    'Fiction',
+    'Historical Fiction',
+    'Childrens',
+    'Poetry'
+]
+
+const ratings = [
+    'Decent (+3)',
+    'Good (+4)',
+    'Fantastic (+4.5)',
+    'Unmatched (5)'
+]
+
 </script>

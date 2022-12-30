@@ -12,10 +12,17 @@ const { category, option } = defineProps(['category', 'option'])
 
 const checked = ref(false)
 
+const categoryState = useState(category, () => [])
+
 watch(checked, () => {
-    if (checked) {
-        useState(category, option)
+    if (checked.value && !categoryState.value.includes(option)) {
+        
+        categoryState.value.push(option)
+
+    } else if (!checked.value && categoryState.value.includes(option)) {
+
+        categoryState.value.splice(categoryState.value.indexOf(option), 1)
+        
     }
-    console.log(checked.value)
 })
 </script>

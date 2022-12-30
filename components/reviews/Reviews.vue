@@ -1,6 +1,6 @@
 <template>
-    <div class="m-3 inline-block">
-        <p class="bold text-3xl">Reviews</p>
+    <div class="m-3 mt-10 inline-block">
+        <p class="text-4xl font-thin">Reviews</p>
         <div class="mt-5">
             <form @submit.prevent="sendReview">
                 <input v-model="reviewContent" class="border-2 border-gray-300 bg-white h-10 mx-4 pr-16 rounded-lg text-sm focus:outline-none" type="text" name="review" placeholder="Add a review" autocomplete="off" />

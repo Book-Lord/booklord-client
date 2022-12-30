@@ -17,7 +17,8 @@ const apiBase = useRuntimeConfig().apiBase
 const userId = computed(() => useSupabaseUser()?.value?.id);
 
 const title = useState('title', () => '');
-const books = useState('books', () => [])
+const books = useState('books', () => []);
+const genres = useState('genres', () => []);
 
 const query = ref('')
 
@@ -30,7 +31,8 @@ const searchByName = async () => {
             method: 'post',
             body: {
                 title: title.value,
-                userId: userId.value || '0'
+                userId: userId.value || '0',
+                genres: genres.value
             }
         }).then( (res) => {
             books.value = res
