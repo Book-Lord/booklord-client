@@ -25,7 +25,7 @@ const query = ref('')
 const searchByName = async () => {
     title.value = query.value
 
-    if (query.value.length > 0)
+    if (query.value.length > 0 || genres.value.length > 0)
     {
         await $fetch(apiBase + `/book/search/`, { 
             method: 'post',

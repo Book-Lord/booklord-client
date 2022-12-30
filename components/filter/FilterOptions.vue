@@ -1,7 +1,6 @@
 <template>
     <div>
         <span class="font-semibold text-xl font-sans w-40 mb-8">Filter options</span>
-        
         <div class="text-gray-600">
             <div>
                 <p class="font-semibold py-4">By Genre</p>
@@ -42,8 +41,6 @@
 
 <script setup>
 import FilterOption from './FilterOption.vue'
-
-const genresState = useState('genres', () => [])
 
 const genres = [
     'Action',

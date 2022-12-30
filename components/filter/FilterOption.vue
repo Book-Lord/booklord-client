@@ -10,9 +10,9 @@ import { defineProps } from 'vue'
 
 const { category, option } = defineProps(['category', 'option'])
 
-const checked = ref(false)
-
 const categoryState = useState(category, () => [])
+
+const checked = ref(categoryState.value.includes(option))
 
 watch(checked, () => {
     if (checked.value && !categoryState.value.includes(option)) {
