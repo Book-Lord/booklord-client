@@ -19,20 +19,27 @@ const userId = computed(() => useSupabaseUser()?.value?.id);
 const title = useState('title', () => '');
 const books = useState('books', () => []);
 const genres = useState('genres', () => []);
+const fromYear = useState('fromYear', () => '');
+const toYear = useState('toYear', () => '');
 
 const query = ref(title.value)
 
 const searchByName = async () => {
     title.value = query.value
 
-    if (query.value.length > 0 || genres.value.length > 0)
+    if (query.value.length > 0 || 
+        genres.value.length > 0 ||
+        fromYear.value != '' ||
+        toYear.value != '')
     {
         await $fetch(apiBase + `/book/search/`, { 
             method: 'post',
             body: {
                 title: title.value,
                 userId: userId.value || '0',
-                genres: genres.value
+                genres: genres.value,
+                from: fromYear.value,
+                to: toYear.value
             }
         }).then( (res) => {
             books.value = res
@@ -49,6 +56,14 @@ const searchByName = async () => {
 }
 
 watch(genres.value, () => {
+    searchByName()
+})
+
+watch(fromYear, () => {
+    searchByName()
+})
+
+watch(toYear, () => {
     searchByName()
 })
 

@@ -11,16 +11,18 @@
                 </div>
             </div>
             <div>
-                <p class="font-semibold py-4">Select Year</p>
+                <p class="font-semibold py-4">Publish Year</p>
                 <div class="mb-3 ">
                     <input
                     type="number"
+                    v-model="fromYear"
                     class="mb-4 block form-control px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-purple-600 focus:outline-none"
                     id="fromYeat"
                     placeholder="From Year"
                     />
                     <input
                     type="number"
+                    v-model="toYear"
                     class="form-control block px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-purple-600 focus:outline-none"
                     id="toYear"
                     placeholder="End Year"
@@ -63,5 +65,19 @@ const ratings = [
     'Fantastic (+4.5)',
     'Unmatched (5)'
 ]
+
+const fromYearState = useState('fromYear', () => '')
+const toYearState = useState('toYear', () => '')
+
+const fromYear = ref(fromYearState.value)
+const toYear = ref(toYearState.value)
+
+watch(fromYear, (val) => {
+    fromYearState.value = val
+})
+
+watch(toYear, (val) => {
+    toYearState.value = val
+})
 
 </script>

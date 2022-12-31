@@ -1,8 +1,13 @@
 <script setup>
     const title = useState('title', () => '')
     const genres = useState('genres', () => [])
+    const fromYear = useState('fromYear', () => '')
+    const toYear = useState('toYear', () => '')
 
-    if (title?.value === '' && genres?.value.length === 0) {
+    if (title?.value === '' &&
+        genres?.value.length === 0 &&
+        fromYear?.value === '' &&
+        toYear?.value === '') {
         navigateTo({
             path: '/explore',
         })
