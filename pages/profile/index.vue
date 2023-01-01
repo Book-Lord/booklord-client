@@ -9,6 +9,8 @@ const email = computed(() => user.value?.email)
 const userId = computed(() => user.value?.id)
 const apiBase = useRuntimeConfig().apiBase
 
+const books = useState('books', () => [])
+
 const uri = apiBase + `/users/${userId.value}`
 const userInfo = ref(null)
 
@@ -20,6 +22,8 @@ await $fetch(uri, {
     }
 }).then( (res) => {
     userInfo.value = res
+    console.log(res)
+    books.value = res.savedBooks
 }).catch( (err) => {
     console.error(err);
 })
@@ -41,10 +45,8 @@ onMounted(() => {
 <template>
     <div>
         <h1 class="text-3xl font-black">Profile</h1>
-        <p class="mt-4">Welcome to your profile page</p>
 
         <div v-if="email">
-            <p class="mt-4">Your email is:</p>
             <p>{{ email }}</p>
         </div>
         <error-loading error="Unable to get user email" v-else />
@@ -54,14 +56,12 @@ onMounted(() => {
         </div>
         <error-loading error="Unable to get user ID" v-else />
 
-        <br>
-        <div v-if="userInfo">
-            <div v-for="(obj, idx) in userInfo[0]" :key="idx">
-                <span class="mb-4"> {{ obj }}</span>
-            </div>
-            <!-- <p>{{ userInfo }}</p> -->
+        <div>
+            <span>{{  userInfo.reviews }}</span>
         </div>
-        <error-loading error="Cannot fetch user info" v-else />
+        <br>
+        <span class="text-3xl font-thin text-gray-400">Saved books</span>
+        <books-browser />
 
         <button @click="logOut" class="mt-20 p-2 font-medium bg-green-500 rounded hover:bg-green-400">Logout</button>
     </div>
