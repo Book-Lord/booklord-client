@@ -21,6 +21,7 @@ const books = useState('books', () => []);
 const genres = useState('genres', () => []);
 const fromYear = useState('fromYear', () => '');
 const toYear = useState('toYear', () => '');
+const rating = useState('rating', () => 0);
 
 const query = ref(title.value)
 
@@ -30,7 +31,8 @@ const searchByName = async () => {
     if (query.value.length > 0 || 
         genres.value.length > 0 ||
         fromYear.value != '' ||
-        toYear.value != '')
+        toYear.value != '' ||
+        rating.value > 0)
     {
         await $fetch(apiBase + `/book/search/`, { 
             method: 'post',
@@ -39,7 +41,8 @@ const searchByName = async () => {
                 userId: userId.value || '0',
                 genres: genres.value,
                 from: fromYear.value,
-                to: toYear.value
+                to: toYear.value,
+                rating: rating.value
             }
         }).then( (res) => {
             books.value = res
@@ -64,6 +67,10 @@ watch(fromYear, () => {
 })
 
 watch(toYear, () => {
+    searchByName()
+})
+
+watch(rating, () => {
     searchByName()
 })
 

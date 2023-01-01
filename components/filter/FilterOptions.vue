@@ -30,19 +30,19 @@
                 </div>
             </div>
             <div>
-                <p class="font-semibold py-4">By Rating</p>
-                <div class="columns-2">
-                    <div v-for="(rating, idx) in ratings" :key="idx">
-                        <filter-option category="rating" :option="rating" />
-                    </div>
-                </div>
+                <p class="font-semibold pt-4">By Rating</p>
+                <span class="text-gray-300 text-xs font-bold">grater than</span>
+                <vue-slider class="mt-4" min=2 max=5 interval=0.5 v-model="ratingValue" />
             </div>
         </div>
     </div>
 </template>
 
 <script setup>
-import FilterOption from './FilterOption.vue'
+import VueSlider from 'vue-slider-component/dist-css/vue-slider-component.umd.min.js'
+import 'vue-slider-component/dist-css/vue-slider-component.css'
+
+import 'vue-slider-component/theme/antd.css'
 
 const genres = [
     'Fiction',
@@ -59,18 +59,13 @@ const genres = [
     'Adult'
 ]
 
-const ratings = [
-    'Decent (+3)',
-    'Good (+4)',
-    'Fantastic (+4.5)',
-    'Unmatched (5)'
-]
-
 const fromYearState = useState('fromYear', () => '')
 const toYearState = useState('toYear', () => '')
+const minRating = useState('rating', () => 0)
 
 const fromYear = ref(fromYearState.value)
 const toYear = ref(toYearState.value)
+const ratingValue = ref(minRating.value)
 
 watch(fromYear, (val) => {
     fromYearState.value = val
@@ -78,6 +73,10 @@ watch(fromYear, (val) => {
 
 watch(toYear, (val) => {
     toYearState.value = val
+})
+
+watch(ratingValue, (val) => {
+    minRating.value = val
 })
 
 </script>
