@@ -18,12 +18,6 @@
     </div>
 </template>
 
-<!-- <script>
-export default {
-    name: 'BookBrowser',
-}
-</script> -->
-
 <script setup>
 const books = useState('books', () => [])
 </script>

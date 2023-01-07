@@ -5,6 +5,20 @@
             <img :src="bookInfo.coverImg" alt="" />
         </div>
         <Reviews :reviews="reviews" :book="bookpage" />
+        <div>
+            <span class="text-3xl font-thin text-gray-400 block">Similar Books</span>
+            <div class="inline-block">
+                <div v-for="(book, idx) in similarBooks" :key="idx" class="inline-block" >
+                    <BookPreview
+                        :title="book.title"
+                        :book-id="book._id"
+                        :cover-img="book.coverImg"
+                        :main-genre="book.genres"
+                        :liked="book.liked"
+                    />
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -16,5 +30,5 @@ const { data } = await useAsyncData('getInfo', () =>
     $fetch(apiBase + `/book/${bookpage}`)
 )
 
-const { bookInfo, reviews } = data.value
+const { bookInfo, reviews, similarBooks } = data.value
 </script>
