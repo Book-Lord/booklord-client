@@ -32,7 +32,7 @@
             <div>
                 <p class="font-semibold pt-4">By Rating</p>
                 <span class="text-gray-300 text-xs font-bold">grater than</span>
-                <vue-slider class="mt-4" min=2 max=5 interval=0.5 v-model="ratingValue" />
+                <vue-slider class="mt-4" :min=2 :max=5 :interval=0.5 v-model="ratingValue" />
             </div>
         </div>
     </div>
@@ -65,7 +65,7 @@ const minRating = useState('rating', () => 0)
 
 const fromYear = ref(fromYearState.value)
 const toYear = ref(toYearState.value)
-const ratingValue = ref(minRating.value)
+const ratingValue = ref(Number(minRating.value))
 
 watch(fromYear, (val) => {
     fromYearState.value = val

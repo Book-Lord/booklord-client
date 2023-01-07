@@ -21,7 +21,7 @@
                     {{ title }}
                 </span>
                 <span class="block text-purple-500 text-center font-mono text-[0.7rem] truncate">{{
-                    mainGenre ? mainGenre[0] : ''
+                    mainGenre ? capitalizeFirstLetter(mainGenre[0]) : ''
                 }}</span>
             </div>
         </div>
@@ -56,6 +56,11 @@ export default {
         liked: {
             type: Boolean,
             required: false
+        }
+    },
+    methods: {
+        capitalizeFirstLetter(string) {
+            return string.charAt(0).toUpperCase() + string.slice(1)
         }
     }
 }
