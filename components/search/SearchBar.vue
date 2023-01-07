@@ -21,7 +21,7 @@ const books = useState('books', () => []);
 const genres = useState('genres', () => []);
 const fromYear = useState('fromYear', () => '');
 const toYear = useState('toYear', () => '');
-const rating = useState('rating', () => 0);
+const rating = useState('rating', () => 2);
 
 const query = ref(title.value)
 

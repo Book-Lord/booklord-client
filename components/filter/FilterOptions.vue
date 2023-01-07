@@ -61,7 +61,7 @@ const genres = [
 
 const fromYearState = useState('fromYear', () => '')
 const toYearState = useState('toYear', () => '')
-const minRating = useState('rating', () => 0)
+const minRating = useState('rating', () => 2)
 
 const fromYear = ref(fromYearState.value)
 const toYear = ref(toYearState.value)
