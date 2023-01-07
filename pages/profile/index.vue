@@ -61,7 +61,7 @@ onMounted(() => {
         </div>
         <br>
         <span class="text-3xl font-thin text-gray-400">Saved books</span>
-        <books-browser />
+        <books-browser class="overflow-y-scroll h-96" />
 
         <button @click="logOut" class="mt-20 p-2 font-medium bg-green-500 rounded hover:bg-green-400">Logout</button>
     </div>
