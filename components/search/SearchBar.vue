@@ -32,7 +32,7 @@ const searchByName = async () => {
         genres.value.length > 0 ||
         fromYear.value != '' ||
         toYear.value != '' ||
-        rating.value > 0)
+        rating.value > 2)
     {
         await $fetch(apiBase + `/book/search/`, { 
             method: 'post',
