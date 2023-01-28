@@ -1,22 +1,45 @@
-<script setup lang="ts">
+<script setup>
 definePageMeta({
   middleware: ['auth'],
 })
 
 const email_form = ref('')
 const password_form = ref('')
+const username = ref('')
 const is_signUp = ref(false)
 
 const supa_client = useSupabaseClient()
 const supa_user = useSupabaseUser()
 
+const apiBase = useRuntimeConfig().apiBase
+
 const signUp = async () => {
-  const { error } = await supa_client.auth.signUp({
+  const { data, error } = await supa_client.auth.signUp({
     email: email_form.value,
     password: password_form.value,
   })
 
-  console.log('error', error)
+  if (error) {
+    console.log('error', error)
+  }
+
+  console.log('data', data)
+
+  await supa_client
+    .from('usernames')
+    .insert([{ username: username.value, userid: data.user.id }]);
+
+  console.log('data', data)
+  const uri = apiBase + `/users/${data.user.id}`
+
+  await $fetch(uri, { 
+  method: 'post',
+  body: { 
+      userId: data.user.id,
+      email: email_form.value,
+      username: username.value
+    }
+  })
 }
 
 const login = async () => {
@@ -40,7 +63,7 @@ watchEffect(() => {
 
 <template>
   <div class="max-w-lg mx-auto mt-8">
-    <h1 class="text-3xl font-black">Log into your account</h1>
+    <h1 class="text-3xl font-black">{{ is_signUp ? "Register an account" : "Log into your account" }}</h1>
     <form
       class="flex flex-col gap-2 mt-16"
       @submit.prevent="() => (is_signUp ? signUp() : login())"
@@ -55,6 +78,13 @@ watchEffect(() => {
         v-model="password_form"
         type="password"
         placeholder="Password"
+        class="p-2 rounded bg-charcoal-600"
+      />
+      <input
+        v-if="is_signUp"
+        v-model="username"
+        type="text"
+        placeholder="Username"
         class="p-2 rounded bg-charcoal-600"
       />
       <button

@@ -8,7 +8,7 @@
                 <p class="text-white text-center"> {{ (review.rating >= 0 ? '+' : '') }} {{ review.rating }}</p>
             </div>
             <div  class="w-3/4 inline-block ml-4 float-right">
-                <p class="bold text-xl">{{ review.userId['email'] || 'Anonymous' }}</p>
+                <p class="bold text-xl">{{ review.userId['name'] || 'Anonymous' }}</p>
                 <p class="text-sm pt-6">{{ review.content || "No review provided" }}</p>
             </div>
         </div>

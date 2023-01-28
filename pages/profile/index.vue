@@ -43,21 +43,21 @@ onMounted(() => {
 </script>
 
 <template>
-    <div>
-        <h1 class="text-3xl font-black">Profile</h1>
+    <div> 
+        <h1 class="text-3xl font-black">{{ userInfo?.name + "'s profile" }}</h1>
 
         <div v-if="email">
-            <p>{{ email }}</p>
+            <p>Email: {{ email }}</p>
         </div>
         <error-loading error="Unable to get user email" v-else />
 
         <div v-if="userId">
-            <p>{{ userId }}</p>
+            <p>UUID: {{ userId }}</p>
         </div>
         <error-loading error="Unable to get user ID" v-else />
 
         <div>
-            <span>{{  userInfo.reviews }}</span>
+            <span>Reviews: {{ userInfo?.reviews }}</span>
         </div>
         <br>
         <span class="text-3xl font-thin text-gray-400">Saved books</span>
