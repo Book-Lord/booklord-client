@@ -58,6 +58,8 @@ const searchByName = async () => {
     }
 }
 
+// Todo: replace with watchEffect
+
 watch(genres.value, () => {
     searchByName()
 })
