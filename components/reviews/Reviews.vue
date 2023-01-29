@@ -21,6 +21,9 @@
 
 <script setup>
     import SingleReview from './SingleReview.vue';
+    import { useToast } from 'vue-toastification'
+
+    const toast = useToast()
 
     const { reviews, book } = defineProps(['reviews', 'book'])
 
@@ -52,8 +55,12 @@
             reviews.unshift(res)
 
             reviewContent.value = ''
+
+            toast.success('Review added successfully 🎉')
         }).catch( (err) => {
             console.error(err);
+
+            toast.error('Failed to add review 😢')
         })  
     }
 </script>

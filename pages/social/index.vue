@@ -42,8 +42,6 @@ const searchByUsername = async () => {
         
         users.value = data?.value
         usersState.value = data?.value
-
-        console.log(users?.value[0])
     }
     else
     {

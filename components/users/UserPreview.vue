@@ -17,6 +17,10 @@
 </template>
 
 <script setup>
+import { useToast } from 'vue-toastification'
+
+const toast = useToast()
+
 const { username, userId } = defineProps(['username', 'userId'])
 
 const user = useSupabaseUser()
@@ -41,8 +45,12 @@ const followUser = async () => {
         }
     }).then ((res) => {
         console.log(res)
+
+        toast.success(`Followed ${username} successfully 🎉`)
     }).catch ((err) => {
         console.error(err)
+
+        toast.error(`Failed to follow ${username} 😢`)
     })
 }
 

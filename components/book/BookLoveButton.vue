@@ -17,6 +17,10 @@
 </template>
 
 <script setup>
+import { useToast } from 'vue-toastification'
+
+const toast = useToast()
+
 const { bookId, isLiked } = defineProps(['bookId', 'isLiked'])
 
 const user = useSupabaseUser()
@@ -45,6 +49,17 @@ const toggleLike = async () => {
         if (res.success) {
             liked.value = !liked.value
         }
+        
+        if (!liked.value) {
+            toast.success("Book was removed from your favourites 😢")
+            return
+        }
+
+        toast.success("Book was added to your favourites ❤️")
+    }).catch ((err) => {
+        console.error(err)
+        
+        toast.error("Failed to save book 😢")
     })
 }
 </script>
