@@ -33,6 +33,7 @@ const liked = ref(isLiked)
 const toggleLike = async () => {
     if (!user.value) {
         navigateTo('/login')
+        return
     }
 
     await $fetch(apiBase + `/saveBook`, {

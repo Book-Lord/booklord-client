@@ -9,7 +9,9 @@
                     {{ userId }}
                 </div>
                 <div>
-                    <Button @click="followUser" :disabled="supaUserId === userId" :class="supaUserId === userId ? 'cursor-not-allowed' : ''" class="mt-4 w-full">Follow</Button>
+                    <Button @click="followUser" :disabled="supaUserId === userId" :class="supaUserId === userId ? 'cursor-not-allowed' : ''" class="mt-4 w-full">
+                        {{ isFollowingFlag ? "Following" : "Follow" }}
+                    </Button>
                 </div>
             </div>
         </div>
@@ -21,14 +23,15 @@ import { useToast } from 'vue-toastification'
 
 const toast = useToast()
 
-const { username, userId } = defineProps(['username', 'userId'])
+const { username, userId, isFollowing } = defineProps(['username', 'userId', 'isFollowing'])
+const isFollowingFlag = ref(isFollowing)
 
 const user = useSupabaseUser()
 const supaUserId = computed(() => user.value?.id)
 
 
 const followUser = async () => {
-    if (!supaUserId.value) {
+    if (!user.value) {
         navigateTo('/login')
         return
     }
@@ -36,6 +39,8 @@ const followUser = async () => {
     if (supaUserId.value === userId) {
         return
     }
+
+    isFollowingFlag.value = !isFollowingFlag.value
 
     await $fetch(useRuntimeConfig().apiBase + `/followUser`, {
         method: 'post',
@@ -45,8 +50,14 @@ const followUser = async () => {
         }
     }).then ((res) => {
         console.log(res)
+        
+        if (isFollowingFlag.value)
+        {
+            toast.success(`Followed ${username} successfully 🎉`)
+            return;
+        }
 
-        toast.success(`Followed ${username} successfully 🎉`)
+        toast.success(`Unfollowed ${username} successfully 😢`)
     }).catch ((err) => {
         console.error(err)
 

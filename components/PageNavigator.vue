@@ -1,7 +1,7 @@
 <template>
     <div class="p-6">
-        <Button @click="previousPage">Previous page</Button>
-        <span>Page {{ page }}</span>
+        <Button v-if="page != 1" @click="previousPage">Previous page</Button>
+        <span class="p-4">Page {{ page }}</span>
         <Button @click="nextPage">Next page</Button>
     </div>
 </template>
