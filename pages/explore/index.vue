@@ -5,8 +5,6 @@
     const books = useState('books', () => [])
     const page = useState('page', () => 1)
 
-    // const { data: response } = await useAsyncData('explore', () => $fetch(apiBase + `/books/${userId.value || '0'}`) )
-    // books.value = response.value
     const getData = async () => {
         await $fetch(apiBase + `/books/${page.value}`, {
             method: 'post',

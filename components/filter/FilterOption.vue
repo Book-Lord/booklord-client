@@ -6,8 +6,6 @@
 </template>
 
 <script setup>
-import { defineProps } from 'vue'
-
 const { category, option } = defineProps(['category', 'option'])
 
 const categoryState = useState(category, () => [])

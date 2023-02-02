@@ -11,13 +11,14 @@
         <div class="block mt-6">
             <Button class="bg-indigo-300 hover:bg-indigo-400">Save</Button>
             <Button>Update Status</Button>
-            <Button>Recommend</Button>
+            <RecommendButton :book="bookInfo._id" />
         </div>
     </div>
 </template>
 
 <script setup>
 import GenreBubble from './GenreBubble.vue'
+import RecommendButton from './RecommendButton.vue';
 
 const { bookInfo } = defineProps(['bookInfo'])
 </script>
