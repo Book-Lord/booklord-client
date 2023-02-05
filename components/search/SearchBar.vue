@@ -36,9 +36,9 @@ const searchByName = async () => {
     {
         await $fetch(apiBase + `/book/search/`, { 
             method: 'post',
+            headers: { 'Authorization': `Bearer ${useSupabaseToken().value}` },
             body: {
                 title: title.value,
-                userId: userId.value || '0',
                 genres: genres.value,
                 from: fromYear.value,
                 to: toYear.value,
