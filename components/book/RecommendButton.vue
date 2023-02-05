@@ -3,16 +3,16 @@
         <Button @click="openModal">Recommend</Button>
         <modal v-show="showModal" @close-modal="showModal = false">
             <div v-for="(user, idx) in users" :key="idx">
-                <div @click="send(user)" class="p-3 m-3 bg-zinc-200 rounded cursor-pointer">
+                <div @click="send(user)" class="p-3 m-3 bg-zinc-200 hover:bg-slate-300 transition-all duration-300 rounded cursor-pointer">
                     <span class="font-bold">{{ user.name }}</span>
                 </div>
             </div>
+            <span class="text-sm text-gray-400">You can only recommend books to people you follow</span>
         </modal>
     </div>
 </template>
 
 <script setup>
-import Modal from '../modal.vue'
 import { useToast } from 'vue-toastification'
 
 const toast = useToast()

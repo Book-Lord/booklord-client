@@ -9,7 +9,7 @@
        <GenreBubble :genres="bookInfo?.genres" />
 
         <div class="block mt-6">
-            <Button class="bg-indigo-300 hover:bg-indigo-400">Save</Button>
+            <Button class="bg-indigo-300 hover:bg-indigo-400"> {{ liked ? 'Saved' : 'Save' }}</Button>
             <Button>Update Status</Button>
             <RecommendButton :book="bookInfo._id" />
         </div>
@@ -20,5 +20,5 @@
 import GenreBubble from './GenreBubble.vue'
 import RecommendButton from './RecommendButton.vue';
 
-const { bookInfo } = defineProps(['bookInfo'])
+const { bookInfo, saved } = defineProps(['bookInfo', 'saved'])
 </script>

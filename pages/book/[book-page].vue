@@ -1,34 +1,40 @@
 <template>
     <div class="card">
-        <BookInfo :book-info="bookInfo" class="inline-block" />
+        <BookInfo :book-info="bookInfo" :saved="saved" class="inline-block" />
+
         <div class="float-right m-5 mr-20 inline-block">
             <img :src="bookInfo.coverImg" alt="" />
         </div>
+
         <Reviews :reviews="reviews" :book="bookpage" />
-        <div>
-            <span class="text-3xl font-thin text-gray-400 block">Similar Books</span>
-            <div class="inline-block">
-                <div v-for="(book, idx) in similarBooks" :key="idx" class="inline-block" >
-                    <BookPreview
-                        :title="book.title"
-                        :book-id="book._id"
-                        :cover-img="book.coverImg"
-                        :main-genre="book.genres"
-                        :liked="book.liked"
-                    />
-                </div>
-            </div>
-        </div>
+        <SimilarBooks :similar-books="similarBooks" />
     </div>
 </template>
 
 <script setup>
+import { useToast } from 'vue-toastification'
+import SimilarBooks from '~~/components/book/SimilarBooks.vue';
+
+const toast = useToast()
+
 const { apiBase } = useRuntimeConfig()
 const { bookpage } = useRoute().params
 
 const { data } = await useAsyncData('getInfo', () =>
-    $fetch(apiBase + `/book/${bookpage}`)
+    $fetch(apiBase + `/book/${bookpage}`,
+    {
+        method: 'get',
+        headers: {
+            'Authorization': `Bearer ${useSupabaseToken().value}`
+        }
+    })
+    .catch((err) => {
+        console.log(err)
+        toast.error('Something went wrong while opening the book 📖')
+
+        return;
+    })
 )
 
-const { bookInfo, reviews, similarBooks } = data.value
+const { bookInfo, reviews, similarBooks, saved } = data.value
 </script>
