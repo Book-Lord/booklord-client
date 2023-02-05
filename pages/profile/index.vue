@@ -44,7 +44,7 @@ onMounted(() => {
 
 <template>
     <div> 
-        <h1 class="text-3xl font-black">{{ userInfo?.name + "'s profile" }}</h1>
+        <span class="text-3xl font-thin text-gray-400">{{ userInfo?.name + "'s profile" }}</span>
 
         <div v-if="email">
             <p>Email: {{ email }}</p>

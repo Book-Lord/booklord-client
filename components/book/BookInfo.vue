@@ -10,7 +10,6 @@
 
         <div class="block mt-6">
             <Button @click="toggleLike" class="bg-indigo-300 hover:bg-indigo-400"> {{ liked ? 'Saved' : 'Save' }}</Button>
-            <Button>Update Status</Button>
             <RecommendButton :book="bookInfo._id" />
         </div>
     </div>

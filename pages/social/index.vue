@@ -1,5 +1,7 @@
 <template>
     <div>
+        <span class="text-3xl font-thin text-gray-400">Social</span>
+
         <div class="xl:w-64 w-max m-3">
             <form @submit.prevent="searchByUsername" class="">
                 <input
@@ -37,6 +39,8 @@ const usersState = useState('users', () => [])
 
 const usernameQuery = ref('')
 const users = ref(usersState.value)
+
+console.log(useSupabaseToken().value)
 
 const searchByUsername = async () => {
     if (usernameQuery.value.length > 0)
