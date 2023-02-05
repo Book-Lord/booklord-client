@@ -1,12 +1,15 @@
 <template>
-    <div class="ml-44">
+    <div class="ml-48">
         <div class="w-2/3 float-left">
             <div>
                 <span class="font-semibold text-xl font-sans">Viral in Bulgaria</span>
                 <books-browser class="overflow-y-scroll h-80" />
             </div>
             <div class="mt-8">
-                <span class="font-semibold text-xl font-sans">Book Categories</span>
+                <span class="font-semibold text-xl font-sans block">Book Categories</span>
+                <div class="mx-6 pt-2 flex flex-nowrap overflow-x-scroll">
+                    <GenreSection :genres="bookGenres" />
+                </div>
             </div>
         </div>
         <div class="bg-indigo-50 h-screen float-right w-1/3 rounded-l-lg p-6">
@@ -14,10 +17,13 @@
             <BookRecommendation title="The Name of the Wind" author="Patrick Rothfuss" coverImg="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1586722975l/2767052.jpg" message="The book is fascinating in terms of style and storyline" />
             <BookRecommendation title="The Potter Harry" author="David Goggins" coverImg="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1546910265l/2.jpg" message="They had nothing in common until Love gave him the reason for" />
         </div>
+        <SearchBar class="hidden" />
     </div>
 </template>
 
 <script setup>
+import bookGenres from '~~/utils/bookGenres';
+
 const apiBase = useRuntimeConfig().apiBase
 const userId = computed(() => useSupabaseUser()?.value?.id);
 

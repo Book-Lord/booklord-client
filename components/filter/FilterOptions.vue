@@ -41,24 +41,10 @@
 <script setup>
 import VueSlider from 'vue-slider-component/dist-css/vue-slider-component.umd.min.js'
 import 'vue-slider-component/dist-css/vue-slider-component.css'
-
 import 'vue-slider-component/theme/antd.css'
+import bookGenres from '~~/utils/bookGenres';
 
-const genres = [
-    'Fiction',
-    'Fantasy',
-    'Classics',
-    'Childrens',
-    'Poetry',
-    'Novels',
-    'Historical Fiction',
-    'Science Fiction',
-    'Philosophy',
-    'France',
-    'Teen',
-    'Adult'
-]
-
+const genres = bookGenres;
 const fromYearState = useState('fromYear', () => '')
 const toYearState = useState('toYear', () => '')
 const minRating = useState('rating', () => 2)
