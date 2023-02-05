@@ -9,7 +9,7 @@
        <GenreBubble :genres="bookInfo?.genres" />
 
         <div class="block mt-6">
-            <Button class="bg-indigo-300 hover:bg-indigo-400"> {{ liked ? 'Saved' : 'Save' }}</Button>
+            <Button @click="toggleLike" class="bg-indigo-300 hover:bg-indigo-400"> {{ liked ? 'Saved' : 'Save' }}</Button>
             <Button>Update Status</Button>
             <RecommendButton :book="bookInfo._id" />
         </div>
@@ -19,6 +19,44 @@
 <script setup>
 import GenreBubble from './GenreBubble.vue'
 import RecommendButton from './RecommendButton.vue';
+import { useToast } from 'vue-toastification'
+
+const toast = useToast()
+const user = useSupabaseUser()
 
 const { bookInfo, saved } = defineProps(['bookInfo', 'saved'])
+
+const liked = ref(saved)
+
+const toggleLike = async () => {
+    if (!user.value) {
+        navigateTo('/login')
+        return
+    }
+
+    await $fetch(useRuntimeConfig().apiBase + `/saveBook`, {
+        method: 'post',
+        headers: { 'Authorization': `Bearer ${useSupabaseToken().value}` },
+        body: {
+            bookId: bookInfo._id
+        }
+    }).then( (res) => {
+        console.log(res)
+
+        if (res.success) {
+            liked.value = !liked.value
+        }
+        
+        if (!liked.value) {
+            toast.success("Book was removed from your favourites 😢")
+            return
+        }
+
+        toast.success("Book was added to your favourites ❤️")
+    }).catch ((err) => {
+        console.error(err)
+        
+        toast.error("Failed to save book 😢")
+    })
+}
 </script>

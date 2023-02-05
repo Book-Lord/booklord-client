@@ -24,7 +24,6 @@ const toast = useToast()
 const { bookId, isLiked } = defineProps(['bookId', 'isLiked'])
 
 const user = useSupabaseUser()
-const userId = computed(() => user.value?.id)
 
 const apiBase = useRuntimeConfig().apiBase
 
@@ -38,11 +37,9 @@ const toggleLike = async () => {
 
     await $fetch(apiBase + `/saveBook`, {
         method: 'post',
+        headers: { 'Authorization': `Bearer ${useSupabaseToken().value}` },
         body: {
             bookId: bookId,
-            userId: userId.value,
-            email: user.value?.email,
-            liked: !liked.value
         }
     }).then( (res) => {
         console.log(res)
