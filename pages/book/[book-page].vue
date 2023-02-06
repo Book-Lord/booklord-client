@@ -17,11 +17,10 @@ import SimilarBooks from '~~/components/book/SimilarBooks.vue';
 
 const toast = useToast()
 
-const { apiBase } = useRuntimeConfig()
 const { bookpage } = useRoute().params
 
 const { data } = await useAsyncData('getInfo', () =>
-    $fetch(apiBase + `/book/${bookpage}`,
+    $fetch(useRuntimeConfig().apiBase + `/book/${bookpage}`,
     {
         method: 'get',
         headers: {

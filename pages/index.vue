@@ -12,12 +12,7 @@
                 </div>
             </div>
         </div>
-        <div class="bg-indigo-50 h-screen float-right w-1/3 rounded-l-lg p-6">
-            <span class="font-semibold text-xl font-sans">Friends' Recommendations</span>
-            <BookRecommendation title="The Name of the Wind" author="Patrick Rothfuss" coverImg="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1586722975l/2767052.jpg" message="The book is fascinating in terms of style and storyline" />
-            <BookRecommendation title="The Potter Harry" author="David Goggins" coverImg="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1546910265l/2.jpg" message="They had nothing in common until Love gave him the reason for" />
-        </div>
-        <SearchBar class="hidden" />
+        <RecommendationSections />
     </div>
 </template>
 
