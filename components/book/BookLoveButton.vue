@@ -17,8 +17,8 @@
 </template>
 
 <script setup>
-import toastObj from 'vue-toastification'
-const { useToast } = toastObj;
+import * as pkg from "vue-toastification"
+const { useToast } = pkg
 
 const toast = useToast()
 

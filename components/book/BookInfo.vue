@@ -18,8 +18,8 @@
 <script setup>
 import GenreBubble from './GenreBubble.vue'
 import RecommendButton from './RecommendButton.vue';
-import toastObj from 'vue-toastification'
-const { useToast } = toastObj;
+import * as pkg from "vue-toastification"
+const { useToast } = pkg
 const toast = useToast()
 
 const user = useSupabaseUser()

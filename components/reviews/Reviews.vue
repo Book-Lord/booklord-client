@@ -21,8 +21,8 @@
 
 <script setup>
     import SingleReview from './SingleReview.vue';
-    import toastObj from 'vue-toastification'
-    const { useToast } = toastObj;
+    import * as pkg from "vue-toastification"
+    const { useToast } = pkg
 
     const toast = useToast()
 
