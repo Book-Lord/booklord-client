@@ -18,7 +18,8 @@
 <script setup>
 import GenreBubble from './GenreBubble.vue'
 import RecommendButton from './RecommendButton.vue';
-import { useToast } from 'vue-toastification'
+import toastt from 'vue-toastification'
+const { useToast } = toastt;
 
 const toast = useToast()
 const user = useSupabaseUser()

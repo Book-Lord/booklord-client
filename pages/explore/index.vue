@@ -1,6 +1,4 @@
 <script setup>
-    const userId = computed(() => useSupabaseUser()?.value?.id);
-
     const books = useState('books', () => [])
     const page = useState('page', () => 1)
 

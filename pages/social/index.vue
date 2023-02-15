@@ -31,7 +31,8 @@
 
 <script setup>
 import UserPreview from '~~/components/users/UserPreview.vue';
-import { useToast } from 'vue-toastification'
+import toastt from 'vue-toastification'
+const { useToast } = toastt;
 
 const toast = useToast()
 
