@@ -2,9 +2,6 @@
 
 export default defineNuxtConfig({
     modules: ['@nuxtjs/supabase'],
-    nitro: {
-      preset: 'vercel-edge',
-    },
 
     css: ['~/assets/css/main.css'],
     

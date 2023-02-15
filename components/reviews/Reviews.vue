@@ -19,10 +19,9 @@
     </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
     import SingleReview from './SingleReview.vue';
-    import toastObj from 'vue-toastification'
-    const { useToast } = toastObj;
+    import { useToast } from 'vue-toastification'
 
     const toast = useToast()
 

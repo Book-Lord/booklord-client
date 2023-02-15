@@ -29,10 +29,9 @@
     </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import UserPreview from '~~/components/users/UserPreview.vue';
-import toastObj from 'vue-toastification'
-const { useToast } = toastObj;
+import { useToast } from 'vue-toastification'
 
 const toast = useToast()
 

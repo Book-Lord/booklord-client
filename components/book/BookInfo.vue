@@ -15,11 +15,11 @@
     </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import GenreBubble from './GenreBubble.vue'
 import RecommendButton from './RecommendButton.vue';
-import toastObj from 'vue-toastification'
-const { useToast } = toastObj;
+import { useToast } from 'vue-toastification'
+
 const toast = useToast()
 
 const user = useSupabaseUser()

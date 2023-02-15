@@ -1,6 +1,5 @@
-<script setup>
-import toastObj from 'vue-toastification'
-const { useToast } = toastObj;
+<script setup lang="ts">
+import { useToast } from 'vue-toastification'
 
 const toast = useToast()
 
