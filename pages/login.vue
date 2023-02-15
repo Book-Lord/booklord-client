@@ -1,4 +1,8 @@
 <script setup>
+import { useToast } from 'vue-toastification'
+
+const toast = useToast()
+
 definePageMeta({
   middleware: ['auth'],
 })
@@ -21,6 +25,7 @@ const signUp = async () => {
 
   if (error) {
     console.log('error', error)
+    toast.error('Something went wrong while signing up 😢\n' + error.message)
   }
 
   console.log('data', data)
@@ -50,6 +55,7 @@ const login = async () => {
 
   if (error) {
     console.log('error', error)
+    toast.error('Something went wrong while logging in 😢\n' + error.message)
     return
   }
 }
