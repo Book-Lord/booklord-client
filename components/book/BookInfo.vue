@@ -18,10 +18,10 @@
 <script setup>
 import GenreBubble from './GenreBubble.vue'
 import RecommendButton from './RecommendButton.vue';
-import toastt from 'vue-toastification'
-const { useToast } = toastt;
-
+import toastObj from 'vue-toastification'
+const { useToast } = toastObj;
 const toast = useToast()
+
 const user = useSupabaseUser()
 
 const { bookInfo, saved } = defineProps(['bookInfo', 'saved'])

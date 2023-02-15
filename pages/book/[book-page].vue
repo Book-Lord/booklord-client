@@ -12,10 +12,10 @@
 </template>
 
 <script setup>
-import toastt from 'vue-toastification'
+import toastObj from 'vue-toastification'
 import SimilarBooks from '~~/components/book/SimilarBooks.vue';
 
-const { useToast } = toastt;
+const { useToast } = toastObj;
 const toast = useToast()
 
 const { bookpage } = useRoute().params
