@@ -7,19 +7,15 @@ const user = useSupabaseUser()
 const client = useSupabaseAuthClient()
 const email = computed(() => user.value?.email)
 const userId = computed(() => user.value?.id)
-const apiBase = useRuntimeConfig().apiBase
 
 const books = useState('books', () => [])
 
-const uri = apiBase + `/users/${userId.value}`
+const uri = useRuntimeConfig().apiBase + `/users/${userId.value}`
 const userInfo = ref(null)
 
 await $fetch(uri, { 
     method: 'post',
-    body: { 
-        userId: userId.value,
-        email: user.value?.email 
-    }
+    headers: { 'Authorization': `Bearer ${useSupabaseToken().value}` }
 }).then( (res) => {
     userInfo.value = res
     console.log(res)
@@ -55,9 +51,33 @@ onMounted(() => {
             <p>UUID: {{ userId }}</p>
         </div>
         <error-loading error="Unable to get user ID" v-else />
-
+        <br>
         <div>
-            <span>Reviews: {{ userInfo?.reviews }}</span>
+            <span class="text-3xl font-thin">Reviews: </span>
+            <div>
+                <div v-for="review in userInfo?.reviews" :key="review._id">
+                    <span>{{ review.content }}</span>
+                </div>
+            </div>
+            <!-- <span>{{ userInfo?.reviews }}</span> -->
+        </div>
+        <br>
+        <div>
+            <span class="text-3xl font-thin">Following: </span>
+            <div>
+                <div v-for="user in userInfo?.following" :key="user._id">
+                    <span>{{ user.name }} - {{ user.email }}</span>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div>
+            <span class="text-3xl font-thin">Followers: </span>
+            <div>
+                <div v-for="user in userInfo?.followers" :key="user._id">
+                    <span>{{ user.name }} - {{ user.email }}</span>
+                </div>
+            </div>
         </div>
         <br>
 
