@@ -1,15 +1,12 @@
 <script setup>
-    const apiBase = useRuntimeConfig().apiBase
-    const userId = computed(() => useSupabaseUser()?.value?.id);
-
     const books = useState('books', () => [])
     const page = useState('page', () => 1)
 
     const getData = async () => {
-        await $fetch(apiBase + `/books/${page.value}`, {
+        await $fetch(useRuntimeConfig().apiBase + `/books/${page.value}`, {
             method: 'post',
-            body: {
-                userId: userId.value || '0'
+            headers: {
+                'Authorization': `Bearer ${useSupabaseToken().value}`
             }
         }).then( (res) => {
             books.value = res
