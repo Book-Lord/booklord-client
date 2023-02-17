@@ -44,11 +44,21 @@
     const { apiBase } = useRuntimeConfig()
 
     const reviewContent = ref('')
-    const rating = ref(50)
+    const rating = ref(0)
     
     const sendReview = async () => {
         if (!userId.value) {
             navigateTo('/login')
+            return
+        }
+
+        if (rating.value == 0) {
+            toast.error('Please provide a rating ⭐️')
+            return
+        }
+
+        if (reviewContent.value.length < 10) {
+            toast.error('Please provide a review with at least 10 characters 📝')
             return
         }
 
