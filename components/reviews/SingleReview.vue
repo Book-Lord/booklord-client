@@ -15,12 +15,19 @@
                         {{ review.content || "No review provided" }}
                     </p>
                     <div v-else>
-                        <p class="text-sm pt-6 overflow-hidden h-32 text-ellipsis">
-                            {{ review.content || "No review provided" }}
-                        </p>
-                        <!-- <button class="text-blue-500 hover:underline" @click="showFullReview = true">
-                            Read more
-                        </button> -->
+                        <div v-if="!showFullReview">
+                            <p class="text-sm pt-6 overflow-hidden h-32">
+                                {{ review.content || "No review provided" }}
+                            </p>
+                            <button class="text-blue-300 text-sm hover:underline" @click="showFullReview = true">
+                                Read more
+                            </button>
+                        </div>
+                        <div v-else>
+                            <p class="text-sm pt-6">
+                                {{ review.content || "No review provided" }}
+                            </p>
+                        </div>
                     </div>
                 </div>
                
