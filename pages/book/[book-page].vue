@@ -6,7 +6,7 @@
             <img :src="bookInfo.coverImg" alt="" />
         </div>
 
-        <Reviews :reviews="reviews" :book="bookpage" />
+        <Reviews :reviews="reviews" :book="bookpage" :keyPhrases="keyPhrases" />
         <SimilarBooks :similar-books="similarBooks" />
     </div>
 </template>
@@ -35,5 +35,5 @@ const { data } = await useAsyncData('getInfo', () =>
     })
 )
 
-const { bookInfo, reviews, similarBooks, saved } = data.value
+const { bookInfo, reviews, similarBooks, saved, keyPhrases } = data?.value
 </script>

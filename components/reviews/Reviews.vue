@@ -11,7 +11,18 @@
                 <button class="bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-8 rounded">Add Review</button>
             </form>
         </div>
-        <div class="rounded bg-gray-50 p-3 mt-3">
+        <div class="rounded bg-gray-50 mt-3 max-w-4xl max-h-screen overflow-y-scroll">
+            <div class="sticky top-0 p-3 bg-gray-50">
+                <p class="text-2xl font-thin">Key Phrases</p>
+                <div v-if="keyPhrases?.length > 0" class="flex flex-wrap">
+                    <div v-for="(phrase, idx) in keyPhrases" :key="idx" class="bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mt-2">
+                        {{ phrase }}
+                    </div>
+                </div>
+                <div v-else>
+                    <p class="text-gray-500">No enough reviews provided to generate key phrases.</p>
+                </div>
+            </div>
             <div v-for="(review, idx) in reviews" :key="idx" >
                 <SingleReview :review="review" />
             </div>
@@ -25,7 +36,7 @@
 
     const toast = useToast()
 
-    const { reviews, book } = defineProps(['reviews', 'book'])
+    const { reviews, book, keyPhrases } = defineProps(['reviews', 'book', 'keyPhrases'])
 
     const userId = computed(() => useSupabaseUser().value?.id)
     const email = computed(() => useSupabaseUser().value?.email)

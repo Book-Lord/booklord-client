@@ -14,13 +14,9 @@ const user = useSupabaseUser()
 const userId = computed(() => user.value?.id)
 const books = useState('books', () => [])
 
-const uri = useRuntimeConfig().apiBase + `/users/${userId.value}`
-
-await $fetch(uri, { 
+await $fetch(useRuntimeConfig().apiBase + `/users/${userId.value}`, { 
     method: 'post',
-    body: { 
-        userId: userId.value,
-    }
+    headers: { 'Authorization': `Bearer ${useSupabaseToken().value}` }
 }).then( (res) => {
     books.value = res.savedBooks
 }).catch( (err) => {
