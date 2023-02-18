@@ -44,8 +44,8 @@ const followUser = async () => {
 
     await $fetch(useRuntimeConfig().apiBase + `/followUser`, {
         method: 'post',
+        headers: { 'Authorization': `Bearer ${useSupabaseToken().value}` },
         body: {
-            userId: supaUserId.value,
 	        userToFollowId: userId
         }
     }).then ((res) => {
@@ -61,7 +61,7 @@ const followUser = async () => {
     }).catch ((err) => {
         console.error(err)
 
-        toast.error(`Failed to follow ${username} 😢`)
+        toast.error(`Failed to follow/unfollow ${username} 😢`)
     })
 }
 

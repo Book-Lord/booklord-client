@@ -32,7 +32,7 @@
             <div>
                 <p class="font-semibold pt-4">By Rating</p>
                 <span class="text-gray-300 text-xs font-bold">grater than</span>
-                <vue-slider class="mt-4" :min=2 :max=5 :interval=0.5 v-model="ratingValue" />
+                <vue-slider class="mt-4" :min=3 :max=5 :interval=0.5 v-model="ratingValue" />
             </div>
         </div>
     </div>
@@ -47,7 +47,7 @@ import bookGenres from '~~/utils/bookGenres';
 const genres = bookGenres;
 const fromYearState = useState('fromYear', () => '')
 const toYearState = useState('toYear', () => '')
-const minRating = useState('rating', () => 2)
+const minRating = useState('rating', () => 3)
 
 const fromYear = ref(fromYearState.value)
 const toYear = ref(toYearState.value)

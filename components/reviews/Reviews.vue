@@ -39,7 +39,6 @@
     const { reviews, book, keyPhrases } = defineProps(['reviews', 'book', 'keyPhrases'])
 
     const userId = computed(() => useSupabaseUser().value?.id)
-    const email = computed(() => useSupabaseUser().value?.email)
 
     const { apiBase } = useRuntimeConfig()
 
@@ -64,10 +63,9 @@
 
         await $fetch(apiBase + `/reviews`, {
             method: 'post',
+            headers: { 'Authorization': `Bearer ${useSupabaseToken().value}` },
             body: {
                 bookId: book,
-                userId: userId.value,
-                email: email.value,
                 rating: (rating.value / 10).toFixed(0),
                 content: reviewContent.value
             }

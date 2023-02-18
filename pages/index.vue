@@ -19,12 +19,11 @@
 <script setup>
 import bookGenres from '~~/utils/bookGenres';
 
-const apiBase = useRuntimeConfig().apiBase
-const userId = computed(() => useSupabaseUser()?.value?.id);
-
 const books = useState('books', () => [])
 
-const { data: result } = await useAsyncData('home', () => $fetch(apiBase + `/featured/${userId.value || '0'}`) )
+const { data: result } = await useAsyncData('home', () => $fetch(useRuntimeConfig().apiBase + `/featured`, {
+    headers: { 'Authorization': `Bearer ${useSupabaseToken().value}` },
+}))
 
 books.value = result.value
 </script>
