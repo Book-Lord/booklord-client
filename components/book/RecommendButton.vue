@@ -44,8 +44,7 @@ const openModal = async () => {
 }
 
 const send = async (user) => {
-
-    await $fetch(useRuntimeConfig().apiBase + `/recommend/${user._id}`,
+    await $fetch(useRuntimeConfig().apiBase + `/recommend/${user.userId}`,
     {
         method: 'post',
         headers: {

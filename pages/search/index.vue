@@ -3,7 +3,7 @@
     const genres = useState('genres', () => [])
     const fromYear = useState('fromYear', () => '')
     const toYear = useState('toYear', () => '')
-    const rating = useState('rating', () => 2)
+    const rating = useState('rating', () => 3)
 
     if (title?.value === '' &&
         genres?.value.length === 0 &&
