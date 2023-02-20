@@ -25,8 +25,6 @@ const { bookId, isLiked } = defineProps(['bookId', 'isLiked'])
 
 const user = useSupabaseUser()
 
-const apiBase = useRuntimeConfig().apiBase
-
 const liked = ref(isLiked)
 
 const toggleLike = async () => {
@@ -35,12 +33,9 @@ const toggleLike = async () => {
         return
     }
 
-    await $fetch(apiBase + `/saveBook`, {
+    await $fetch(useRuntimeConfig().apiBase + `/users/${bookId}/books/saved`, {
         method: 'post',
         headers: { 'Authorization': `Bearer ${useSupabaseToken().value}` },
-        body: {
-            bookId: bookId,
-        }
     }).then( (res) => {
         console.log(res)
 

@@ -23,7 +23,7 @@ const users = ref([])
 
 const openModal = async () => {
     const { data } = await useAsyncData('getFollowing', () => 
-        $fetch(useRuntimeConfig().apiBase + `/followingUsers`,
+        $fetch(useRuntimeConfig().apiBase + `/users/following`,
         {
             method: 'get',
             headers: {

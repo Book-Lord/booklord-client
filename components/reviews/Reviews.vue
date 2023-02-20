@@ -61,11 +61,10 @@
             return
         }
 
-        await $fetch(apiBase + `/reviews`, {
+        await $fetch(apiBase + `/books/${book}/reviews`, {
             method: 'post',
             headers: { 'Authorization': `Bearer ${useSupabaseToken().value}` },
             body: {
-                bookId: book,
                 rating: (rating.value / 10).toFixed(0),
                 content: reviewContent.value
             }

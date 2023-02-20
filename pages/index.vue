@@ -21,7 +21,7 @@ import bookGenres from '~~/utils/bookGenres';
 
 const books = useState('books', () => [])
 
-const { data: result } = await useAsyncData('home', () => $fetch(useRuntimeConfig().apiBase + `/featured`, {
+const { data: result } = await useAsyncData('home', () => $fetch(useRuntimeConfig().apiBase + `/books/featured`, {
     headers: { 'Authorization': `Bearer ${useSupabaseToken().value}` },
 }))
 

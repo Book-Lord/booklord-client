@@ -48,7 +48,7 @@ const searchByUsername = async () => {
         const username = usernameQuery.value.trim()
 
         const { data } = await useAsyncData('getUsers', () => 
-            $fetch(useRuntimeConfig().apiBase + `/searchUsers/${username}`,
+            $fetch(useRuntimeConfig().apiBase + `/users/search?username=${username}`,
             {
                 method: 'get',
                 headers: {

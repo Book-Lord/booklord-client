@@ -10,11 +10,11 @@ const userId = computed(() => user.value?.id)
 
 const books = useState('books', () => [])
 
-const uri = useRuntimeConfig().apiBase + `/users/${userId.value}`
+const uri = useRuntimeConfig().apiBase + `/users/info/${userId.value}`
 const userInfo = ref(null)
 
 await $fetch(uri, { 
-    method: 'post',
+    method: 'get',
     headers: { 'Authorization': `Bearer ${useSupabaseToken().value}` }
 }).then( (res) => {
     userInfo.value = res

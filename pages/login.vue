@@ -35,7 +35,7 @@ const signUp = async () => {
     .insert([{ username: username.value, userid: data.user.id }]);
 
   console.log('data', data)
-  const uri = apiBase + `/users/${data.user.id}`
+  const uri = apiBase + `/users`
 
   await $fetch(uri, { 
   method: 'post',

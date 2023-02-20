@@ -33,12 +33,9 @@ const toggleLike = async () => {
         return
     }
 
-    await $fetch(useRuntimeConfig().apiBase + `/saveBook`, {
+    await $fetch(useRuntimeConfig().apiBase + `/users/${bookInfo._id}/books/saved`, {
         method: 'post',
         headers: { 'Authorization': `Bearer ${useSupabaseToken().value}` },
-        body: {
-            bookId: bookInfo._id
-        }
     }).then( (res) => {
         console.log(res)
 

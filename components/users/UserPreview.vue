@@ -42,7 +42,7 @@ const followUser = async () => {
 
     isFollowingFlag.value = !isFollowingFlag.value
 
-    await $fetch(useRuntimeConfig().apiBase + `/followUser`, {
+    await $fetch(useRuntimeConfig().apiBase + `/users/followed`, {
         method: 'post',
         headers: { 'Authorization': `Bearer ${useSupabaseToken().value}` },
         body: {

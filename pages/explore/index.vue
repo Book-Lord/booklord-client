@@ -3,7 +3,7 @@
     const page = useState('page', () => 1)
 
     const getData = async () => {
-        await $fetch(useRuntimeConfig().apiBase + `/books/${page.value}`, {
+        await $fetch(useRuntimeConfig().apiBase + `/books?page=${page.value}`, {
             method: 'post',
             headers: {
                 'Authorization': `Bearer ${useSupabaseToken().value}`
