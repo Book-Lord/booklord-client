@@ -14,7 +14,6 @@
 
 <script setup>
 const apiBase = useRuntimeConfig().apiBase
-const userId = computed(() => useSupabaseUser()?.value?.id);
 
 const title = useState('title', () => '');
 const books = useState('books', () => []);

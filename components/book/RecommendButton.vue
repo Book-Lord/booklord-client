@@ -44,13 +44,14 @@ const openModal = async () => {
 }
 
 const send = async (user) => {
-    await $fetch(useRuntimeConfig().apiBase + `/recommend/${user.userId}`,
+    await $fetch(useRuntimeConfig().apiBase + `/recommendations`,
     {
         method: 'post',
         headers: {
             'Authorization': `Bearer ${useSupabaseToken().value}`
         },
         body: {
+            userId: user.userId,
             bookId: book
         }
     }).then( (res) => {

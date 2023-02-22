@@ -42,7 +42,7 @@ const signUp = async () => {
   body: { 
       userId: data.user.id,
       email: email_form.value,
-      username: username.value
+      username: username.value,
     }
   })
 }

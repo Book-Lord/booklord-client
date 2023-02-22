@@ -33,7 +33,7 @@ const { book } = recommendation;
 
 const acknowledgeRecommendation = async () => {
     await useAsyncData('ack', () =>
-        $fetch(useRuntimeConfig().apiBase + `/recommendation/${recommendation._id}/acknowledged`,
+        $fetch(useRuntimeConfig().apiBase + `/recommendations/${recommendation._id}/acknowledged`,
         {
             method: 'post',
             headers: {
