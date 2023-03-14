@@ -61,6 +61,8 @@ export default {
       SideBarLink
    },
    mounted() {
+      // Show sidebar on home page else 
+      // show smaller version of it
       if (this.$route.path === '/')
       {
          this.sidebarToggle = true;
@@ -70,6 +72,8 @@ export default {
       }
    },
    watch: {
+      // Show sidebar on home page
+      // show smaller version of it
       $route(to, from) {
          if (to.path === '/')
          {

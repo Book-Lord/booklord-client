@@ -3,6 +3,7 @@ definePageMeta({
   middleware: ['auth']
 })
 
+// Define page's state
 const user = useSupabaseUser()
 const client = useSupabaseAuthClient()
 const email = computed(() => user.value?.email)
@@ -13,6 +14,7 @@ const books = useState('books', () => [])
 const uri = useRuntimeConfig().apiBase + `/users/info/${userId.value}`
 const userInfo = ref(null)
 
+// Get additional user info
 await $fetch(uri, { 
     method: 'get',
     headers: { 'Authorization': `Bearer ${useSupabaseToken().value}` }
@@ -30,7 +32,7 @@ const logOut = () => {
     navigateTo('/explore')
 }
 
-
+// Redirect to login if user is not authenticated
 onMounted(() => {
     if (!user.value) {
         navigateTo('/login')

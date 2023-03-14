@@ -1,6 +1,5 @@
 <template>
     <div v-for="(genre, idx) in genres" :key="idx" class="p-3">
-        <!-- Todo: think about putting an image -->
         <div @click="gotoGanre(genre)" class="bg-stone-600 rounded p-6 drop-shadow-md w-40 
         cursor-pointer text-center hover:scale-110 transition duration-300">
             <span class="font-medium text-white"> {{ genre }} </span>

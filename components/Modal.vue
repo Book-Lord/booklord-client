@@ -12,7 +12,6 @@
 export default {}
 </script>
 
-<!-- Todo: Rewrite for tailwind -->
 <style scoped>
 .modal-overlay {
   position: fixed;

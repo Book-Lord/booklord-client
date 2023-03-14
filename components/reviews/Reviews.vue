@@ -65,6 +65,7 @@
             method: 'post',
             headers: { 'Authorization': `Bearer ${useSupabaseToken().value}` },
             body: {
+                // Transform to 1-10 scale
                 rating: (rating.value / 10).toFixed(0),
                 content: reviewContent.value
             }

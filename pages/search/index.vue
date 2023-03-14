@@ -5,6 +5,7 @@
     const toYear = useState('toYear', () => '')
     const rating = useState('rating', () => 3)
 
+    // If no filters are applied, go to the explore page
     if (title?.value === '' &&
         genres?.value.length === 0 &&
         fromYear?.value === '' &&

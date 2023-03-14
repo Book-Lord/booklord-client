@@ -1,10 +1,8 @@
 <template>
     <div v-if="review.userId" class="mt-5 rounded bg-emerald-50">
         <div class="p-5 flex">
-            <!-- <div class="w-1/4"> -->
-                <!-- <img class="rounded-full" :src="review.userImg" alt=""> -->
-            <!-- </div> -->
             <div class="w-1/6 h-full bg-emerald-500 rounded inline-block float-left">
+                <!-- If rating is present -> format it with a plus sign  -->
                 <p class="text-white text-center"> {{ (review.rating >= 0 ? '+' : '') }} {{ review.rating }}</p>
             </div>
             <div  class="w-3/4 inline-block ml-4 float-right">
@@ -30,20 +28,6 @@
                         </div>
                     </div>
                 </div>
-               
-                <!-- <div v-else>
-                    <p class="text-sm pt-6 truncate">
-                        {{ review.content || "No review provided" }}
-                    </p>
-                    <button class="text-blue-500 hover:underline" @click="showFullReview = true">
-                        Read more
-                    </button>
-                    <div v-if="showFullReview">
-                        <p class="text-sm pt-2">{{ review.content }}</p>
-                    </div>
-                </div> -->
-
-                <!-- <p class="text-sm pt-6">{{ review.content || "No review provided" }}</p> -->
             </div>
         </div>
     </div>
@@ -54,5 +38,7 @@
 
 <script setup>
     const { review } = defineProps(['review'])
+    
+    // Define variable for read-more button
     const showFullReview = ref(false)
 </script>

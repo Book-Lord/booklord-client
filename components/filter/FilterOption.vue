@@ -13,10 +13,12 @@ const categoryState = useState(category, () => [])
 const checked = ref(categoryState.value.includes(option))
 
 watch(checked, () => {
+    // If the checkbox is checked and the option is not in the state, add it
     if (checked.value && !categoryState.value.includes(option)) {
         
         categoryState.value.push(option)
 
+    // If the checkbox is not checked and the option is in the state, remove it
     } else if (!checked.value && categoryState.value.includes(option)) {
 
         categoryState.value.splice(categoryState.value.indexOf(option), 1)

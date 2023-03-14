@@ -53,6 +53,7 @@ const fromYear = ref(fromYearState.value)
 const toYear = ref(toYearState.value)
 const ratingValue = ref(Number(minRating.value))
 
+// Watch on filter change
 watch(fromYear, (val) => {
     fromYearState.value = val
 })

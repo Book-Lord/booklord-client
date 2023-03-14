@@ -18,6 +18,7 @@ await $fetch(useRuntimeConfig().apiBase + `/users/info/${userId.value}`, {
     method: 'get',
     headers: { 'Authorization': `Bearer ${useSupabaseToken().value}` }
 }).then( (res) => {
+    // Set books state to response
     books.value = res.savedBooks
 }).catch( (err) => {
     console.error(err);

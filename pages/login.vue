@@ -3,10 +3,13 @@ import { useToast } from 'vue-toastification'
 
 const toast = useToast()
 
+// Add authentication middleware to the page
 definePageMeta({
   middleware: ['auth'],
 })
 
+
+// Define the props that the page accepts
 const email_form = ref('')
 const password_form = ref('')
 const username = ref('')
@@ -17,6 +20,7 @@ const supa_user = useSupabaseUser()
 
 const apiBase = useRuntimeConfig().apiBase
 
+// Sign up a new user
 const signUp = async () => {
   const { data, error } = await supa_client.auth.signUp({
     email: email_form.value,
@@ -47,6 +51,7 @@ const signUp = async () => {
   })
 }
 
+// Login an existing user
 const login = async () => {
   const { error } = await supa_client.auth.signInWithPassword({
     email: email_form.value,
@@ -60,6 +65,7 @@ const login = async () => {
   }
 }
 
+// Redirect to the explore page if the user is already logged in
 watchEffect(() => {
   if (supa_user.value) {
     navigateTo('/explore')

@@ -24,9 +24,11 @@ const rating = useState('rating', () => 3);
 
 const query = ref(title.value)
 
+// Search book by name
 const searchByName = async () => {
     title.value = query.value
 
+    // If the query is not empty, send the request
     if (query.value.length > 0 || 
         genres.value.length > 0 ||
         fromYear.value != '' ||
@@ -50,14 +52,13 @@ const searchByName = async () => {
         return navigateTo({
             path: '/search',
         })
+    // else return to the explore page
     } else {
         return navigateTo({
             path: '/explore',
         })
     }
 }
-
-// Todo: replace with watchEffect
 
 watch(genres.value, () => {
     searchByName()

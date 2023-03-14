@@ -40,38 +40,40 @@ const usersState = useState('users', () => [])
 const usernameQuery = ref('')
 const users = ref(usersState.value)
 
-console.log(useSupabaseToken().value)
-
 const searchByUsername = async () => {
-    if (usernameQuery.value.length > 0)
-    {       
-        const username = usernameQuery.value.trim()
-
-        const { data } = await useAsyncData('getUsers', () => 
-            $fetch(useRuntimeConfig().apiBase + `/users/search?username=${username}`,
-            {
-                method: 'get',
-                headers: {
-                    'Authorization': `Bearer ${useSupabaseToken().value}`
-                }
-            })
-            .catch((err) => {
-                toast.error('Something went wrong while searching 🔎')
-                console.log(err)
-             })
-        )
-
-        if (data?.value.length == 0)
-            toast.info('No users found with that username 🤷‍♂️')
-        
-        users.value = data?.value
-        usersState.value = data?.value
-    }
-    else
+    // If the query is empty, clear the users list
+    if (usernameQuery.value.length < 1)
     {
         users.value = []
         usersState.value = []
+
+        return
     }
+      
+    // Format the query
+    const username = usernameQuery.value.trim()
+
+    // Send the request
+    const { data } = await useAsyncData('getUsers', () => 
+        $fetch(useRuntimeConfig().apiBase + `/users/search?username=${username}`,
+        {
+            method: 'get',
+            headers: {
+                'Authorization': `Bearer ${useSupabaseToken().value}`
+            }
+        })
+        .catch((err) => {
+            toast.error('Something went wrong while searching 🔎')
+            console.log(err)
+            })
+    )
+
+    if (data?.value.length == 0)
+        toast.info('No users found with that username 🤷‍♂️')
+    
+    // Set the state
+    users.value = data?.value
+    usersState.value = data?.value
 }
 
 </script>
