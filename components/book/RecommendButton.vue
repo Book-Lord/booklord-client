@@ -21,7 +21,14 @@ const { book } = defineProps(['book'])
 const showModal = ref(false)
 const users = ref([])
 
+const user = useSupabaseUser()
+
 const openModal = async () => {
+    if (!user.value) {
+        navigateTo('/login')
+        return
+    }
+
     const { data } = await useAsyncData('getFollowing', () => 
         $fetch(useRuntimeConfig().apiBase + `/users/following`,
         {

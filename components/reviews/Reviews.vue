@@ -12,7 +12,7 @@
             </form>
         </div>
         <div class="rounded bg-gray-50 mt-3 max-w-4xl max-h-screen overflow-y-scroll">
-            <div class="sticky top-0 p-3 bg-gray-50">
+            <div class="sticky top-0 p-3 bg-gray-50 rounded">
                 <p class="text-2xl font-thin">Key Phrases</p>
                 <div v-if="keyPhrases?.length > 0" class="flex flex-wrap">
                     <div v-for="(phrase, idx) in keyPhrases" :key="idx" class="bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mt-2">

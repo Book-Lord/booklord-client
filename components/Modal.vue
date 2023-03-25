@@ -22,6 +22,7 @@ export default {}
   display: flex;
   justify-content: center;
   background-color: #000000da;
+  z-index: 60;
 }
 .modal {
   text-align: center;
