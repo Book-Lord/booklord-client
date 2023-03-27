@@ -1,6 +1,6 @@
 <template>
-    <div class="bg-indigo-50 h-screen float-right w-1/3 rounded-l-lg p-6">
-        <span class="font-semibold text-xl font-sans">Friends' Recommendations</span>
+    <div class="bg-indigo-50 h-[90vh] float-right w-1/3 rounded-l-lg p-6 overflow-y-scroll">
+        <span class="text-xl"><span class="text-purple-500 font-semibold">{{ data?.data.length }}</span> Friends' Recommendations</span>
         <BookRecommendation v-for="(recommendation, idx) in data?.data" :key="idx" :recommendation="recommendation" />
     </div>
 </template>
