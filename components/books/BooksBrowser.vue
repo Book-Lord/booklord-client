@@ -19,5 +19,7 @@
 </template>
 
 <script setup>
+import BookPreview from "./BookPreview.vue"
+
 const books = useState('books', () => [])
 </script>

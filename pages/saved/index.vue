@@ -6,6 +6,8 @@
 </template>
 
 <script setup>
+import BooksBrowser from '~/components/books/BooksBrowser.vue'
+
 definePageMeta({
   middleware: ['auth']
 })

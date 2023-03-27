@@ -20,6 +20,7 @@ const { book } = defineProps(['book'])
 
 const showModal = ref(false)
 const users = ref([])
+const message = ref('')
 
 const user = useSupabaseUser()
 

@@ -17,7 +17,9 @@
 </template>
 
 <script setup>
-import bookGenres from '~~/utils/bookGenres';
+import BooksBrowser from '~/components/books/BooksBrowser.vue'
+import GenreSection from '~/components/genres/GenreSection.vue'
+import RecommendationSections from '~/components/recommendations/RecommendationSections.vue'
 
 const books = useState('books', () => [])
 

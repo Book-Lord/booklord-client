@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import BookLoveButton from '~/components/book/BookLoveButton.vue'
+import BookLoveButton from '~/components/books/BookLoveButton.vue'
 
 export default {
     name: 'BookPreview',

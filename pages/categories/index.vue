@@ -1,6 +1,6 @@
 <template>
     <div>
-        <span class="text-3xl font-thin text-gray-400">Saved books</span>
+        <span class="text-3xl font-thin text-gray-400">Book Categories</span>
         <div class="mx-6 pt-2 flex flex-wrap">
             <GenreSection :genres="bookGenres" />
         </div>
@@ -8,6 +8,5 @@
 </template>
 
 <script setup>
-import bookGenres from '~~/utils/bookGenres';
-
+import GenreSection from '~/components/genres/GenreSection.vue'
 </script>

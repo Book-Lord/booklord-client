@@ -6,6 +6,7 @@
 </template>
 
 <script setup>
+import BookRecommendation from './BookRecommendation.vue'
 
 const { data } = await useAsyncData('getRecommendations', () =>
     $fetch(useRuntimeConfig().apiBase + `/recommendations`,

@@ -14,5 +14,7 @@
 </template>
 
 <script setup>
+import BookPreview from "./BookPreview.vue"
+
 const { similarBooks } = defineProps(['similarBooks'])
 </script>

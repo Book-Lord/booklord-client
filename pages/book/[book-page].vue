@@ -13,7 +13,8 @@
 
 <script setup>
 import { useToast } from 'vue-toastification'
-import SimilarBooks from '~~/components/book/SimilarBooks.vue';
+import SimilarBooks from '~~/components/books/SimilarBooks.vue';
+import BookInfo from '~/components/books/BookInfo.vue'
 
 const toast = useToast()
 

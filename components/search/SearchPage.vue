@@ -17,5 +17,10 @@
 </template>
 
 <script setup>
+import BooksBrowser from '~/components/books/BooksBrowser.vue'
+import PageNavigator from '~/components/PageNavigator.vue'
+import SearchBar from '~/components/search/SearchBar.vue'
+import FilterOptions from '~/components/filters/FilterOptions.vue'
+
 const { title, page } = defineProps(['title', 'page'])
 </script>

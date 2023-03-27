@@ -16,8 +16,8 @@
 </template>
 
 <script setup>
-import GenreBubble from './GenreBubble.vue'
-import RecommendButton from './RecommendButton.vue';
+import GenreBubble from '~/components/genres/GenreBubble.vue'
+import RecommendButton from '~/components/recommendations/RecommendButton.vue';
 import { useToast } from 'vue-toastification'
 
 const toast = useToast()
