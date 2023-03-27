@@ -1,7 +1,7 @@
 <template>
   <transition name="modal-fade">
     <div class="modal-overlay" @click="$emit('close-modal')">
-      <div class="modal p-10" @click.stop>
+      <div class="modal p-10 relative" @click.stop>
         <slot />
       </div>
     </div>

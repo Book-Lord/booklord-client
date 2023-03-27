@@ -8,6 +8,9 @@
                 </div>
             </div>
             <span class="text-sm text-gray-400">You can only recommend books to people you follow</span>
+            <div class="w-4/5 bottom-5 bg-gray-50 rounded absolute left-1/2 transform -translate-x-1/2">
+                <textarea placeholder="Type a message.. (Optional)" v-model="message" class="w-full h-36 border-2 border-gray-300 bg-white px-4 py-2 rounded-lg text-sm focus:outline-none"></textarea>
+            </div>
         </modal>
     </div>
 </template>
@@ -60,7 +63,8 @@ const send = async (user) => {
         },
         body: {
             userId: user.userId,
-            bookId: book
+            bookId: book,
+            message: message.value
         }
     }).then( (res) => {
         showModal.value = false
