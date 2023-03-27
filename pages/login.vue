@@ -32,13 +32,10 @@ const signUp = async () => {
     toast.error('Something went wrong while signing up 😢\n' + error.message)
   }
 
-  console.log('data', data)
-
   await supa_client
     .from('usernames')
     .insert([{ username: username.value, userid: data.user.id }]);
 
-  console.log('data', data)
   const uri = apiBase + `/users`
 
   await $fetch(uri, { 

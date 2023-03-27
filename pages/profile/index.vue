@@ -20,7 +20,6 @@ await $fetch(uri, {
     headers: { 'Authorization': `Bearer ${useSupabaseToken().value}` }
 }).then( (res) => {
     userInfo.value = res
-    console.log(res)
     books.value = res.savedBooks
 }).catch( (err) => {
     console.error(err);

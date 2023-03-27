@@ -48,9 +48,7 @@ const followUser = async () => {
         body: {
 	        userToFollowId: userId
         }
-    }).then ((res) => {
-        console.log(res)
-        
+    }).then ((res) => {        
         if (isFollowingFlag.value)
         {
             toast.success(`Followed ${username} successfully 🎉`)

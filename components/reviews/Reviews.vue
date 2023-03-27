@@ -1,5 +1,5 @@
 <template>
-    <div class="m-3 mt-10 inline-block">
+    <div class="m-3 mt-10 block">
         <p class="text-4xl font-thin">Reviews</p>
         <div class="mt-5">
             <button @click="showModal = !showModal" class="bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-8 rounded">Create a review</button>
@@ -23,10 +23,6 @@
                         <button class="bg-purple-500 hover:bg-purple-400 text-white font-bold py-2 px-8 rounded-full self-center">Send</button>
                     </form>
                 </div>
-                    <!-- <div>
-                        <label for="medium-range" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Rating ({{ (rating / 10).toFixed(0) }})</label>
-                        <input v-model="rating" id="medium-range" type="range" class="h-2 mr-6 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700">
-                    </div>                -->
             </modal>
         </div>
         <div class="rounded bg-gray-50 mt-3 max-w-4xl max-h-screen overflow-y-scroll">

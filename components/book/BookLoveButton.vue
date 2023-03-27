@@ -37,8 +37,6 @@ const toggleLike = async () => {
         method: 'post',
         headers: { 'Authorization': `Bearer ${useSupabaseToken().value}` },
     }).then( (res) => {
-        console.log(res)
-
         if (res.success) {
             liked.value = !liked.value
         }
