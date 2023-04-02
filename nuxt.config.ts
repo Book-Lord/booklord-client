@@ -16,5 +16,14 @@ export default defineNuxtConfig({
         public: {
           apiBase: process.env.API_BASE,
         }
-      }
+    },
+
+    app: {
+      head: {
+        title: 'BookWard | Social Network for Book Lovers',
+        link: [
+          { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+        ]
+      },
+    }
 })

@@ -8,6 +8,10 @@ definePageMeta({
   middleware: ['auth'],
 })
 
+useHead({
+  title: 'Login into BookWard',
+})
+
 
 // Define the props that the page accepts
 const email_form = ref('')
