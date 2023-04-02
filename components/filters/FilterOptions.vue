@@ -35,6 +35,14 @@
                 <vue-slider class="mt-4" :min=3 :max=5 :interval=0.5 v-model="ratingValue" />
             </div>
         </div>
+        <div>
+            <button
+            class="py-3 px-8 mt-12 w-full bg-gray-100 hover:bg-gray-300 rounded items-center text-center font-semibold transition-all duration-300"
+            @click="clearFilters"
+            >
+            Clear Filters
+            </button>
+        </div>
     </div>
 </template>
 
@@ -65,5 +73,11 @@ watch(toYear, (val) => {
 watch(ratingValue, (val) => {
     minRating.value = val
 })
+
+const clearFilters = () => {
+    fromYear.value = ''
+    toYear.value = ''
+    ratingValue.value = 3
+}
 
 </script>

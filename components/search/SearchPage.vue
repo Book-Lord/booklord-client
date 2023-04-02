@@ -8,7 +8,7 @@
             <div class="inline-block">
                 <filter-options keep-alive />
             </div>
-            <div class="w-4/5 inline-block float-right p-4">
+            <div class="w-[79%] inline-block float-right p-4">
                 <books-browser class="w-4/5 float-right inline-block" />
                 <page-navigator class="w-4/5 float-right block" />
             </div>

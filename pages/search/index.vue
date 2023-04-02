@@ -10,12 +10,11 @@
         genres?.value.length === 0 &&
         fromYear?.value === '' &&
         toYear?.value === '' &&
-        rating?.value === 2) {
+        rating?.value === 3) {
         navigateTo({
             path: '/explore',
         })
     }
-
 </script>
 
 <template>
