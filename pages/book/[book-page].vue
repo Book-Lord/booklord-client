@@ -17,7 +17,6 @@ import SimilarBooks from '~~/components/books/SimilarBooks.vue';
 import BookInfo from '~/components/books/BookInfo.vue'
 
 const toast = useToast()
-
 const { bookpage } = useRoute().params
 
 const { data } = await useAsyncData('getInfo', () =>
@@ -37,4 +36,18 @@ const { data } = await useAsyncData('getInfo', () =>
 )
 
 const { bookInfo, reviews, similarBooks, saved, keyPhrases } = data?.value
+
+const updateRecentlyViewed = () => {
+    const recentlyViewed = useState('recentlyViewed', () => [])
+
+    if (recentlyViewed.value.length > 4)
+        recentlyViewed.value.shift()
+
+    if (recentlyViewed.value.find((book) => book.bookId == bookInfo.bookId))
+        return
+
+    recentlyViewed.value.push(bookInfo)
+}
+
+updateRecentlyViewed()
 </script>
