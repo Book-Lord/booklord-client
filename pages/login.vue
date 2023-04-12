@@ -50,11 +50,18 @@ const signUp = async () => {
       username: username.value,
     }
   })
+
+  // Set the cookies & user
+  const accessToken = useCookie('sb-access-token')
+  const refreshToken = useCookie('sb-refresh-token')
+  accessToken.value = data.session?.access_token ?? null
+  refreshToken.value = data.session?.refresh_token ?? null
+  supa_user.value = data.user
 }
 
 // Login an existing user
 const login = async () => {
-  const { error } = await supa_client.auth.signInWithPassword({
+  const { data, error } = await supa_client.auth.signInWithPassword({
     email: email_form.value,
     password: password_form.value,
   })
@@ -64,6 +71,13 @@ const login = async () => {
     toast.error('Something went wrong while logging in 😢\n' + error.message)
     return
   }
+
+  // Set the cookies & user
+  const accessToken = useCookie('sb-access-token')
+  const refreshToken = useCookie('sb-refresh-token')
+  accessToken.value = data.session?.access_token ?? null
+  refreshToken.value = data.session?.refresh_token ?? null
+  supa_user.value = data.user
 }
 
 // Redirect to the explore page if the user is already logged in
