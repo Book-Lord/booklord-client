@@ -50,6 +50,13 @@ const signUp = async () => {
       username: username.value,
     }
   })
+
+  // Set the cookies & user
+  const accessToken = useCookie('sb-access-token')
+  const refreshToken = useCookie('sb-refresh-token')
+  accessToken.value = data.session?.access_token ?? null
+  refreshToken.value = data.session?.refresh_token ?? null
+  supa_user.value = data.user
 }
 
 // Login an existing user
