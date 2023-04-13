@@ -37,13 +37,6 @@ const email = computed(() => user.value?.email)
          <div v-if="sidebarToggle" class="object-none object-bottom">
             <p class="text-gray-300"> {{ email }}</p>
          </div>
-         <div v-if="sidebarToggle" class="abosulte mt-auto">
-            <span class="font-medium m-2 text-gray-400">Currently reading</span>
-            <br/>
-            <div class="h-14 bg-white w-70 mt-2 shadow transition-all duration-300 rounded-md">
-               <!-- <span class="font-semibold">The Princess Bride</span> -->
-            </div>
-         </div>
       </div>
     </div>
 </template>
