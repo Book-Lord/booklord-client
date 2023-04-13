@@ -7,7 +7,7 @@
             </div>
             <div class="mt-8">
                 <span class="font-semibold text-xl font-sans block">Book Categories</span>
-                <div class="mx-6 pt-2 flex flex-nowrap overflow-x-scroll">
+                <div class="mx-6 pt-2 grid grid-rows-2 grid-flow-col gap-4 overflow-x-scroll">
                     <GenreSection :genres="bookGenres" />
                 </div>
             </div>

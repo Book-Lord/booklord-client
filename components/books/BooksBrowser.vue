@@ -7,7 +7,7 @@
                     :book-id="book._id"
                     :cover-img="book.coverImg"
                     :main-genre="book.genres"
-                    :liked="book.liked"
+                    :liked="book.liked || false"
                 />
             </div>
         </div>
