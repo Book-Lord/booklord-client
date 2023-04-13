@@ -70,7 +70,7 @@ onMounted(() => {
                 <div class="m-4 bg-indigo-100 rounded p-8 overflow-y-scroll">
                     <span class="text-3xl font-thin">Most Liked Genres</span>
                     <div>
-                        <div v-for="(genre, idx) in topGenres" :key="idx" class="m-2 mt-8 text-2xl">
+                        <div v-for="(genre, idx) in topGenres" :key="idx" class="m-2 mt-8 text-xl">
                             <span class="capitalize">{{ (idx + 1) }}. {{ genre }}</span>
                         </div>
                     </div>
