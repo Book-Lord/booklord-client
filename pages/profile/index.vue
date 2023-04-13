@@ -1,4 +1,7 @@
 <script setup>
+import UserPreview from '~~/components/users/UserPreview.vue';
+import ReviewsReview from '~~/components/reviews/ReviewPreview.vue';
+
 definePageMeta({
   middleware: ['auth']
 })
@@ -13,6 +16,8 @@ const books = useState('books', () => [])
 
 const uri = useRuntimeConfig().apiBase + `/users/info/${userId.value}`
 const userInfo = ref(null)
+const topGenres = ref(null)
+const showFollowing = ref(true)
 
 // Get additional user info
 await $fetch(uri, { 
@@ -21,6 +26,7 @@ await $fetch(uri, {
 }).then( (res) => {
     userInfo.value = res
     books.value = res.savedBooks
+    topGenres.value = res.topGenres
 }).catch( (err) => {
     console.error(err);
 })
@@ -41,47 +47,64 @@ onMounted(() => {
 
 <template>
     <div> 
-        <span class="text-3xl font-thin text-gray-400">{{ userInfo?.name + "'s profile" }}</span>
+        <div class="m-8">
+            <div class="bg-indigo-100 rounded p-8">
+                <span class="text-3xl font-thin">{{ userInfo?.name + "'s profile" }}</span>
+                <div class="mt-4" v-if="email">
+                    <p>Email: {{ email }}</p>
+                </div>
 
-        <div v-if="email">
-            <p>Email: {{ email }}</p>
-        </div>
-        <error-loading error="Unable to get user email" v-else />
-
-        <div v-if="userId">
-            <p>UUID: {{ userId }}</p>
-        </div>
-        <error-loading error="Unable to get user ID" v-else />
-        <br>
-        <div>
-            <span class="text-3xl font-thin">Reviews: </span>
-            <div>
-                <div v-for="review in userInfo?.reviews" :key="review._id">
-                    <span>{{ review.content }}</span>
+                <div v-if="userId">
+                    <p>UUID: {{ userId }}</p>
                 </div>
             </div>
-            <!-- <span>{{ userInfo?.reviews }}</span> -->
-        </div>
-        <br>
-        <div>
-            <span class="text-3xl font-thin">Following: </span>
-            <div>
-                <div v-for="user in userInfo?.following" :key="user._id">
-                    <span>{{ user.name }} - {{ user.email }}</span>
+            <div class="grid gap-4 grid-cols-3 grid-rows-1 mt-8 max-h-[50vh] relative">
+                <div class="m-4 bg-indigo-100 rounded p-8 overflow-y-scroll">
+                    <span class="text-3xl font-thin bg-indigo-100">Reviews</span>
+                    <div>
+                        <div v-for="review in userInfo?.reviews" :key="review._id">
+                            <ReviewsReview :review="review" />
+                        </div>
+                    </div>
+                </div>
+                <div class="m-4 bg-indigo-100 rounded p-8 overflow-y-scroll">
+                    <span class="text-3xl font-thin">Most Liked Genres</span>
+                    <div>
+                        <div v-for="(genre, idx) in topGenres" :key="idx" class="m-2 mt-8 text-2xl">
+                            <span class="capitalize">{{ (idx + 1) }}. {{ genre }}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="m-4 bg-indigo-100 rounded p-8 overflow-y-scroll">
+                    <div v-if="showFollowing">
+                        <span @click="showFollowing = !showFollowing" class="text-3xl font-thin cursor-pointer">Following</span>
+                        <div>
+                            <div v-for="user in userInfo?.following" :key="user._id">
+                                <UserPreview
+                                :username="user.name"
+                                :userId="user.userId"
+                                :hideFollowing="true"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <div v-if="!showFollowing">
+                        <span @click="showFollowing = !showFollowing" class="text-3xl font-thin cursor-pointer">Followers</span>
+                        <div>
+                            <div v-for="user in userInfo?.followers" :key="user._id">
+                                <UserPreview
+                                :username="user.name"
+                                :userId="user.userId"
+                                :hideFollowing="true"
+                                />
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+        
         <br>
-        <div>
-            <span class="text-3xl font-thin">Followers: </span>
-            <div>
-                <div v-for="user in userInfo?.followers" :key="user._id">
-                    <span>{{ user.name }} - {{ user.email }}</span>
-                </div>
-            </div>
-        </div>
-        <br>
-
-        <button @click="logOut" class="mt-20 p-2 font-medium bg-green-500 rounded hover:bg-green-400">Logout</button>
+        <button @click="logOut" class="mt-20 p-2 font-medium bg-red-300 rounded hover:bg-red-200 transition-all">Logout</button>
     </div>
 </template> 
