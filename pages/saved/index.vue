@@ -21,7 +21,12 @@ await $fetch(useRuntimeConfig().apiBase + `/users/info/${userId.value}`, {
     headers: { 'Authorization': `Bearer ${useSupabaseToken().value}` }
 }).then( (res) => {
     // Set books state to response
-    books.value = res.savedBooks
+    // And populate their liked status
+    let resBooks = res.savedBooks
+    resBooks.forEach((book) => {
+        book.liked = true
+    })
+    books.value = resBooks
 }).catch( (err) => {
     console.error(err);
 })
