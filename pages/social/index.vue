@@ -26,8 +26,9 @@
             <img src="~/assets/search.png" class="w-1/4 ml-auto mr-auto" />
             <span class="text-2xl font-mono">Search for your friends...</span>
         </div>
-        <div class="absolute bottom-0 max-h-[50%]">
+        <div class="absolute bottom-0 max-h-[30%]">
             <span class="text-3xl font-thin text-gray-400">Your Friends</span>
+            <span v-if="friends.length > 3" class="text-sm text-gray-400 block m-1">Scroll down to show all friends</span>
             <div>
                 <div v-for="(friend, idx) in friends" :key="idx" class="inline-block mt-10">
                     <div class="p-6">
